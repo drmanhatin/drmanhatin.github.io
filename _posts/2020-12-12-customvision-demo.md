@@ -2,7 +2,7 @@
 layout: default
 title:  "Using CustomVision to recognize chess pieces in realtime"
 date:   2020-12-15 11:33:27 +0100
-categories: jekyll update
+categories: azure customvision
 description: "In this post I will show you how you can use CustomVision to recognize different chess pieces." 
 ---
 
