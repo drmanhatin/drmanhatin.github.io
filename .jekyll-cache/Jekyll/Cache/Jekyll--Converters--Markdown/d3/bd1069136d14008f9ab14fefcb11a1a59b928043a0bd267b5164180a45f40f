@@ -1,15 +1,7 @@
----
-layout: default
----
-
-{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-
-{% for post in site.posts %}
-  
-## [{{ post.date | date: date_format }} | {{ post.title }}]({{post.url}}) 
-{{ post.description }} 
-* * * 
-{% endfor %}
+I"
+<h2 id="dec-15-2020--welcome-to-jekyll"><a href="/jekyll/update/2020/12/15/customvision-demo.html">Dec 15, 2020 | Welcome to Jekyll!</a></h2>
+<p>In this post I will show you how you can use CustomVision to recognize different chess pieces.</p>
+<hr />
 
 <!-- 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
@@ -131,3 +123,4 @@ Long, single-line code blocks should not wrap. They should horizontally scroll i
 ```
 The final element.
 ``` -->
+:ET

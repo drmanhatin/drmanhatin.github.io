@@ -1,0 +1,34 @@
+I"�	<h1 id="azure-customvision-realtime-recognition-demo">Azure CustomVision Realtime Recognition demo</h1>
+
+<p>For a customer I was tasked to demonstrate the capabilities of <a href="https://customvision.ai">Azure’s CustomVision platform</a>. To help truly envision what the CustomVision platform can do, I proposed we should try to make the demonstration happen in ‘real time’. Real time in this case means drawing the labels over the recognized objects within the timespan of seconds. In this blog post, I will demonstrate how simple it is to teach a CustomVision model to recognize different chess pieces.</p>
+
+<h3 id="this-is-the-end-result">This is the end result</h3>
+<div style="max-width: 100%">
+<iframe width="560" height="560" style="max-width: 100%" src="https://www.youtube.com/embed/t0P6LBDkSlc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<p>As you can see in the video above, which I took using my phone, the CustomVision model can recognize most chess pieces easily. It does have some trouble with recognizing the differences between a pawn and a rook, which is understandable. These pieces are pretty similar, and I’ve only fed the model about 100 photo’s yet.</p>
+
+<p>On a technical level, what happens in this video is this:</p>
+
+<ol>
+  <li>The phone takes a picture, using my <a href="https://github.com/drmanhatin/CustomVisionRealTime">CustomVision RealTime toolkit</a>. This toolkit is run in the browser, <strong>so no app required!</strong></li>
+  <li>The picture is compressed, to save bandwidth, speed up the upload, and to ensure that the video does not exceed 4MB (max size for labeling in CustomVision)</li>
+  <li>The picture is sent to the CustomVision API</li>
+  <li>CustomVision returns the labels and the coordinates of where it has detected these labels</li>
+  <li>The labels are drawn over the camera screen in the browser</li>
+</ol>
+
+<p>This process typically takes between 1 to 2 seconds, depending on the network speed, device speed and the size of the photo.</p>
+
+<h3 id="how-to-teach-customvision-to-recognize-different-chess-pieces">How to teach CustomVision to recognize different chess pieces</h3>
+
+<p>This is actually VERY simple and doesn’t require ANY knowledge of programming or machine learning. It requires that you have:</p>
+
+<ol>
+  <li>A <a href="https://customvision.ai">CustomVision</a> account</li>
+  <li>Photos of different chess pieces</li>
+  <li>A brain</li>
+</ol>
+
+:ET

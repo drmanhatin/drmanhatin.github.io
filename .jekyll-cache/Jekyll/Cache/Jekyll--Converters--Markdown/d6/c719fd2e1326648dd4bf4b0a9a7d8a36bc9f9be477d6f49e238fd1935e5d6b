@@ -1,0 +1,12 @@
+I"�<h1 id="azure-customvision-realtime-recognition-demo">Azure CustomVision Realtime Recognition demo</h1>
+
+<p>For a customer I was tasked to demonstrate the capabilities of <a href="https://customvision.ai">Azure’s CustomVision platform</a>. To help truly envision what the CustomVision platform can do, I proposed we should try to make the demonstration happen in ‘real time’. Real time in this case means drawing the labels over the recognized objects within the timespan of seconds. In this blog post, I will demonstrate how simple it is to teach a CustomVision model to recognize different chess pieces.</p>
+
+<h3 id="this-is-the-end-result">This is the end result</h3>
+<div style="max-width: 100%">
+<iframe width="560" height="560" style="max-width: 100%" src="https://www.youtube.com/embed/t0P6LBDkSlc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<p>As you can see in the video above, which I took using my phone, the CustomVision model can recognize most chess pieces easily. It does have some trouble with recognizing the differences between a pawn and a rook. These pieces are pretty similar, and I’ve only fed the model about 100 photo’s yet.</p>
+
+:ET
