@@ -1,4 +1,4 @@
-I"�<h1 id="azure-customvision-realtime-recognition-demo">Azure CustomVision Realtime Recognition demo</h1>
+I"�<h1 id="azure-customvision-realtime-recognition-demo">Azure CustomVision Realtime Recognition demo</h1>
 
 <p>For a customer I was tasked to demonstrate the capabilities of <a href="https://customvision.ai">Azure’s CustomVision platform</a>. To help truly envision what the CustomVision platform can do, I proposed we should try to make the demonstration happen in ‘real time’. Real time in this case means drawing the labels over the recognized objects within the timespan of seconds. In this blog post, I will demonstrate how simple it is to teach a CustomVision model to recognize different chess pieces.</p>
 
@@ -35,10 +35,18 @@
   <li>Label photos accurately, draw the bounding boxes as close to the pieces as possible</li>
 </ul>
 
-<p>then you can label multiple chess pieces at the same time and at different angles. As such:
-<img src="/assets/images/chess-1.png" alt="chess pieces labeled" /></p>
+<p>then you can label multiple chess pieces at the same time and at different angles. As such:</p>
 
-<p>A minimum of 15 images per “tag” (type of object, in this case a rook, bishop, pawn, queen, king or knight) is required. Typically, more images will lead to a better result. After taking the pictures, it’s time to upload them to CustomVision. Go to the “Training Images” tab and click “Add Images”. Upload all your images. Now for each image, tag the images with the right labels.  <img src="/assets/images/pawn.png" alt="chess piece pawn" /></p>
+<figure> 
+        <img src="/assets/images/chess-1.png" />
+        <figcaption> Multiple chess pieces labeled in the same picture.</figcaption>
+</figure>
+
+<p>A minimum of 15 images per “tag” (type of object, in this case a rook, bishop, pawn, queen, king or knight) is required. Typically, more images will lead to a better result. After taking the pictures, it’s time to upload them to CustomVision. Go to the “Training Images” tab and click “Add Images”. Upload all your images. Now for each image, tag the images with the right labels.</p>
+<figure> 
+        <img src="/assets/images/pawn.png" />
+        <figcaption>A pawn</figcaption>
+</figure>
 
 <p>Once you have labeled all your pictures, click “train” in the top right corner of the CustomVision portal and select “Quick Training”. After a few minutes, the training will finish. In the “Performance” tab of the portal, you can see how the model has performed. If you want to test the model “in realtime”, click “Publish”. Then, click on the “Prediction URL” button. Here you can find the URL + key, which you will require in the next step.</p>
 
@@ -46,5 +54,28 @@
 <img src="/assets/images/prediction.png" alt="prediction stats" /></p>
 
 <p>If you have obtained your key and url, go to the <a href="https://customvision.victorsanner.nl">CustomVision Toolbox</a> on your phone. Now enter the URL + Key. Point your phone at a few chess pieces and see how your model performs!</p>
+
+<style>
+    #share-buttons {display: inline-block; vertical-align: middle; }
+    #share-buttons:after {content: ""; display: block; clear: both;}
+    #share-buttons > div {position: relative; text-align: left; height: 36px; width: 32px; float: left; text-align: center;}
+    #share-buttons > div > svg {height: 16px; fill: #d5d5d5; margin-top: 10px;}
+    #share-buttons > div:hover {cursor: pointer;}
+    #share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+    #share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+    #share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+    #share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+    #share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+    #share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+    #share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+    #share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+    #share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+    #share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+    #share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+    #share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+    #share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+    </style>
+
+<p><span style="color: silver;">Share on: /azure/customvision/2020/12/15/customvision-demo.html</span>&lt;div id="share-buttons"&gt;</p>
 
 :ET

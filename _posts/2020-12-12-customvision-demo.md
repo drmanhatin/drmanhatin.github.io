@@ -40,9 +40,17 @@ Next step is to take pictures of your chess pieces. In order to be as efficient 
 * Label photos accurately, draw the bounding boxes as close to the pieces as possible
 
  then you can label multiple chess pieces at the same time and at different angles. As such:
-![chess pieces labeled](/assets/images/chess-1.png)
 
-A minimum of 15 images per "tag" (type of object, in this case a rook, bishop, pawn, queen, king or knight) is required. Typically, more images will lead to a better result. After taking the pictures, it's time to upload them to CustomVision. Go to the "Training Images" tab and click "Add Images". Upload all your images. Now for each image, tag the images with the right labels.  ![chess piece pawn](/assets/images/pawn.png)
+ <figure> 
+        <img src="/assets/images/chess-1.png"/>
+        <figcaption> Multiple chess pieces labeled in the same picture.</figcaption>
+</figure>
+
+A minimum of 15 images per "tag" (type of object, in this case a rook, bishop, pawn, queen, king or knight) is required. Typically, more images will lead to a better result. After taking the pictures, it's time to upload them to CustomVision. Go to the "Training Images" tab and click "Add Images". Upload all your images. Now for each image, tag the images with the right labels.  
+<figure> 
+        <img src="/assets/images/pawn.png"/>
+        <figcaption>A pawn</figcaption>
+</figure>
 
 
 
@@ -53,6 +61,7 @@ In the "Performance" tab I have selected a probability threshold of 70%, this me
 
 If you have obtained your key and url, go to the [CustomVision Toolbox](https://customvision.victorsanner.nl) on your phone. Now enter the URL + Key. Point your phone at a few chess pieces and see how your model performs! 
 
+{% include share-buttons.html %}
 
 
 
