@@ -6,9 +6,9 @@ categories: azure customvision
 description: "In this post I will show you how you can use CustomVision to recognize different chess pieces." 
 ---
 
-# Azure CustomVision Realtime Recognition demo
+# Using CustomVision to recognize chess pieces in realtime
 
-For a customer I was tasked to demonstrate the capabilities of [Azure's CustomVision platform](https://customvision.ai). To help truly envision what the CustomVision platform can do, I proposed we should try to make the demonstration happen in 'real time'. Real time in this case means drawing the labels over the recognized objects within the timespan of seconds. In this blog post, I will demonstrate how simple it is to teach a CustomVision model to recognize different chess pieces.
+For a customer I was tasked to demonstrate the capabilities of [Azure's CustomVision platform](https://customvision.ai). CustomVision allows people without any programming knowledge at all to create their own computer vision models, and even bring this in production in no time. To help truly envision what the CustomVision platform can do, I proposed we should try to make the demonstration happen in 'real time'. Real time in this case means drawing the labels over the recognized objects within the timespan of seconds. In this blog post, I will demonstrate how simple it is to teach a CustomVision model to recognize different chess pieces. I will use my CustomVision RealTime toolkit, [github repo here](https://github.com/drmanhatin/CustomVisionRealTime), to send the images to the CustomVision API.
 
 If you follow this tutorial from front to back, you can expect to have a working model within a few hours. 
 
@@ -36,6 +36,7 @@ This is actually VERY simple and doesn't require ANY knowledge of programming or
 Next step is to take pictures of your chess pieces. In order to be as efficient as possible, take pictures keeping the following things in mind:
 
 * Take photos from many different angles
+* Aim to achieve an even distribution of tags, e.g. 100 tags of a rook, 100 tags of a bishop, 100x tags of a queen etc.
 * Take photos in consistent lighting (e.g. if you need to recognize the chess pieces in daytime light, feed the CustomVision model images of chess pieces in daytime light)
 * Label photos accurately, draw the bounding boxes as close to the pieces as possible
 
