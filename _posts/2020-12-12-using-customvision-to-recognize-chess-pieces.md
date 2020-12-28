@@ -57,6 +57,13 @@ A minimum of 15 images per "tag" (type of object, in this case a rook, bishop, p
 
 Once you have labeled all your pictures, click "train" in the top right corner of the CustomVision portal and select "Quick Training". After a few minutes, the training will finish. In the "Performance" tab of the portal, you can see how the model has performed. If you want to test the model "in realtime", click "Publish". Then, click on the "Prediction URL" button. Here you can find the URL + key, which you will require in the next step. 
 
+<figure> 
+        <img src="/assets/images/endpoint.png"/>
+        <figcaption>The endpoints created by CustomVision</figcaption>
+</figure>
+
+
+
 In the "Performance" tab I have selected a probability threshold of 70%, this means that if the label is less than 70% certain, it won't count as a good result. I have also selected an overlap threshold of 50%, which means that the detected label bounding box should overlap at least 50% with the bounding box you have created in the portal, else it will not count as a good result either. After about 160 images and 24 hours of training, this is the result:
 ![prediction stats](/assets/images/prediction.png)
 
