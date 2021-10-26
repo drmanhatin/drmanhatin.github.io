@@ -9,7 +9,7 @@ description: "I think many people are not aware of the possiblities of running m
 # Creating a cross platform app on Azure and deploying it to the Play Store. 
 
 A PWA, short for Progressive Web App, is a website which behaves like a classic desktop application. The website (or web app) uses Javascript to facilitate interactions with users. 
-Browsing through a classical website means loading entire pages over and over, whereas a PWA makes lightweight API calls to interact with a backend, and after receiving a response user device then renders the page itself.
+Browsing through a classical website means loading entire pages over and over, whereas a PWA makes lightweight API calls to interact with a backend, and after receiving a response the browser then renders the page itself.
 
 A big advantage of using a PWA is that you can use a single codebase and single CI/CD pipeline to deploy the app for multiple platforms. Because the page is rendered on the device (client side rendering) the backend can focus on returning data, and the app can be deployed as static HTML/CSS/Javascript website.
 
