@@ -106,7 +106,7 @@ Download the generated package and unzip it.
         <figcaption>Android Package</figcaption>
 </figure>
 
-The package contains 6. We will use two of them to upload our app to the play store. The assetlinks file is used to prove that the creator of the website has also created a phone app with which you can access it. This file prevents people from making phone apps from sites which they do not run. This file must always be accessible in the same path: https://YOURSITEURLHERE.com/.well-known/assetlinks.json
+The package contains 6 files. We will use two of them to upload our app to the play store. The assetlinks file is used to prove that the creator of the website has also created a phone app with which you can access it. This file prevents people from making phone apps from sites which they do not run. This file must always be accessible in the same path: https://YOURSITEURLHERE.com/.well-known/assetlinks.json
 
 <figure> 
         <img src="/assets/images/vue3dir.png"/>
