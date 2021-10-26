@@ -22,7 +22,7 @@ Static Web Apps are the ideal solution for developers who want to get their webs
 If you have all the prerequisites listed below, you can have a working cross platform app working within 15 minutes. 
 
 ### The end result
-The end result is an app which we can access both through the browser and which we will install as an android app. This app can also be deployed to the Apple app store.
+The end result is an app which we can access through the browser but also install as a android app. This app can also be deployed to the Apple app store.
 
 
 ### Prerequisites
