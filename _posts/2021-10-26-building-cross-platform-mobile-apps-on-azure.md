@@ -70,7 +70,10 @@ We will deploy the project using Azure Static Web Apps. The easiest way to do th
         <figcaption>Static Web App Creation</figcaption>
 </figure>
 
-Azure Static Web Apps will create a CICD pipeline for you, which automatically deploys new versions of the app when you commit to this github repository. Under Build Details, select the VueJS build preset.
+Azure Static Web Apps will create a Github Actions pipeline for you, which automatically deploys new versions of the app when you commit to this github repository.
+
+
+ Under Build Details, select the VueJS build preset.
 
 <figure> 
         <img src="/assets/images/vue3builddetails.png"/>
@@ -80,6 +83,12 @@ Azure Static Web Apps will create a CICD pipeline for you, which automatically d
 The app location field should match the directory in which you have the package.json file located. In my case, this file is in the root of the repository. 
 
 Finish creating the webapp and browse to the github repository. You will notice that Azure has created a Github Action, which will be used to build and deploy your Vue3 PWA to Azure.
+
+<figure> 
+        <img src="/assets/images/githubaction.png"/>
+        <figcaption>Our Github Action pipeline</figcaption>
+</figure>
+
 
 Open the Static Web App you just created in the Azure Portal, and click the “Browse” button. 
 
