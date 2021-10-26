@@ -1,6 +1,6 @@
-I"'<h1 id="using-customvision-to-recognize-chess-pieces-in-realtime">Using CustomVision to recognize chess pieces in realtime</h1>
+I"�'<h1 id="using-customvision-to-recognize-chess-pieces-in-realtime">Using CustomVision to recognize chess pieces in realtime</h1>
 
-<p>For a customer I was tasked to demonstrate the capabilities of <a href="https://customvision.ai">Azure’s CustomVision platform</a>. CustomVision allows people without any programming knowledge at all to create their own computer vision models, and even bring this in production in no time. To help truly envision what the CustomVision platform can do, I proposed we should try to make the demonstration happen in ‘real time’. Real time in this case means drawing the labels over the recognized objects within the timespan of seconds. In this blog post, I will demonstrate how simple it is to teach a CustomVision model to recognize different chess pieces. I will use my CustomVision RealTime toolkit, [github repo here](https://github.com/drmanhatin/CustomVisionRealTime, to send the images to the CustomVision API.</p>
+<p>For a customer I was tasked to demonstrate the capabilities of <a href="https://customvision.ai">Azure’s CustomVision platform</a>. CustomVision allows people without any programming knowledge at all to create their own computer vision models, and even bring this in production in no time. To help truly envision what the CustomVision platform can do, I proposed we should try to make the demonstration happen in ‘real time’. Real time in this case means drawing the labels over the recognized objects within the timespan of seconds. In this blog post, I will demonstrate how simple it is to teach a CustomVision model to recognize different chess pieces. I will use my CustomVision RealTime toolkit, <a href="https://github.com/drmanhatin/CustomVisionRealTime">github repo here</a>, to send the images to the CustomVision API.</p>
 
 <p>If you follow this tutorial from front to back, you can expect to have a working model within a few hours.</p>
 
@@ -31,7 +31,7 @@
 
 <ul>
   <li>Take photos from many different angles</li>
-  <li>Aim for an even distribution of tags, e.g. 100x rook, 100x bishop, 100x queen etc.</li>
+  <li>Aim to achieve an even distribution of tags, e.g. 100 tags of a rook, 100 tags of a bishop, 100x tags of a queen etc.</li>
   <li>Take photos in consistent lighting (e.g. if you need to recognize the chess pieces in daytime light, feed the CustomVision model images of chess pieces in daytime light)</li>
   <li>Label photos accurately, draw the bounding boxes as close to the pieces as possible</li>
 </ul>
@@ -50,6 +50,11 @@
 </figure>
 
 <p>Once you have labeled all your pictures, click “train” in the top right corner of the CustomVision portal and select “Quick Training”. After a few minutes, the training will finish. In the “Performance” tab of the portal, you can see how the model has performed. If you want to test the model “in realtime”, click “Publish”. Then, click on the “Prediction URL” button. Here you can find the URL + key, which you will require in the next step.</p>
+
+<figure> 
+        <img src="/assets/images/endpoint.png" />
+        <figcaption>The endpoints created by CustomVision</figcaption>
+</figure>
 
 <p>In the “Performance” tab I have selected a probability threshold of 70%, this means that if the label is less than 70% certain, it won’t count as a good result. I have also selected an overlap threshold of 50%, which means that the detected label bounding box should overlap at least 50% with the bounding box you have created in the portal, else it will not count as a good result either. After about 160 images and 24 hours of training, this is the result:
 <img src="/assets/images/prediction.png" alt="prediction stats" /></p>
