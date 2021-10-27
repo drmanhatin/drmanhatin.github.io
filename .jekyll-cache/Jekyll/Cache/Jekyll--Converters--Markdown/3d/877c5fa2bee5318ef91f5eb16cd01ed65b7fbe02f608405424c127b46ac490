@@ -1,7 +1,7 @@
-I"�:<h1 id="creating-a-cross-platform-app-on-azure-and-deploying-it-to-the-play-store">Creating a cross platform app on Azure and deploying it to the Play Store.</h1>
+I"�;<h1 id="creating-a-cross-platform-app-on-azure-and-deploying-it-to-the-play-store">Creating a cross platform app on Azure and deploying it to the Play Store.</h1>
 
 <p>A PWA, short for Progressive Web App, is a website which behaves like a classic desktop application. The website (or web app) uses Javascript to facilitate interactions with users. 
-Browsing through a classical website means loading entire pages over and over, whereas a PWA makes lightweight API calls to interact with a backend, and after receiving a response user device then renders the page itself.</p>
+Browsing through a classical website means loading entire pages over and over, whereas a PWA makes lightweight API calls to interact with a backend, and after receiving a response the browser then renders the page itself.</p>
 
 <p>A big advantage of using a PWA is that you can use a single codebase and single CI/CD pipeline to deploy the app for multiple platforms. Because the page is rendered on the device (client side rendering) the backend can focus on returning data, and the app can be deployed as static HTML/CSS/Javascript website.</p>
 
@@ -13,8 +13,13 @@ Browsing through a classical website means loading entire pages over and over, w
 
 <p>If you have all the prerequisites listed below, you can have a working cross platform app working within 15 minutes.</p>
 
+<figure> 
+        <img src="/assets/images/architecture.jpg" style="min-width: 800px" />
+        <figcaption>Architecture</figcaption>
+</figure>
+
 <h3 id="the-end-result">The end result</h3>
-<p>The end result is an app which we can access both through the browser and which we will install as an android app. This app can also be deployed to the apple app store.</p>
+<p>The end result of this tutorial is an app which we can access through the browser but which we can also install as a android app.</p>
 
 <h3 id="prerequisites">Prerequisites</h3>
 <p>If you want to follow this tutorial, you’ll need the following:</p>
@@ -62,7 +67,9 @@ Browsing through a classical website means loading entire pages over and over, w
         <figcaption>Static Web App Creation</figcaption>
 </figure>
 
-<p>Azure Static Web Apps will create a CICD pipeline for you, which automatically deploys new versions of the app when you commit to this github repository. Under Build Details, select the VueJS build preset.</p>
+<p>Azure Static Web Apps will create a Github Actions pipeline for you, which automatically deploys new versions of the app when you commit to this github repository.</p>
+
+<p>Under Build Details, select the VueJS build preset.</p>
 
 <figure> 
         <img src="/assets/images/vue3builddetails.png" />
@@ -72,6 +79,11 @@ Browsing through a classical website means loading entire pages over and over, w
 <p>The app location field should match the directory in which you have the package.json file located. In my case, this file is in the root of the repository.</p>
 
 <p>Finish creating the webapp and browse to the github repository. You will notice that Azure has created a Github Action, which will be used to build and deploy your Vue3 PWA to Azure.</p>
+
+<figure> 
+        <img src="/assets/images/githubaction.png" />
+        <figcaption>Our Github Action pipeline</figcaption>
+</figure>
 
 <p>Open the Static Web App you just created in the Azure Portal, and click the “Browse” button.</p>
 
@@ -97,7 +109,7 @@ Browsing through a classical website means loading entire pages over and over, w
         <figcaption>Android Package</figcaption>
 </figure>
 
-<p>The package contains 6. We will use two of them to upload our app to the play store. The assetlinks file is used to prove that the creator of the website has also created a phone app with which you can access it. This file prevents people from making phone apps from sites which they do not run. This file must always be accessible in the same path: https://YOURSITEURLHERE.com/.well-known/assetlinks.json</p>
+<p>The package contains 6 files. We will use two of them to upload our app to the play store. The assetlinks file is used to prove that the creator of the website has also created a phone app with which you can access it. This file prevents people from making phone apps from sites which they do not run. This file must always be accessible in the same path: https://YOURSITEURLHERE.com/.well-known/assetlinks.json</p>
 
 <figure> 
         <img src="/assets/images/vue3dir.png" />
@@ -152,7 +164,7 @@ Copy the SHA-256 certificate fingerprint. Now go back to your Vue project and op
   <li>A single CI/CD pipeline can update the app for all platforms at once.</li>
 </ul>
 
-<p>A good PWA is (nearly) indistinguishable from a native app. If you don’t need access to special native API’s or if you don’t need to absolute best CPU performance,  consider using a PWA instead of building seperate native apps. Furthermore,modern browsers support an increasing amount of device API’s. Below you can see an example of a phone app I made (also using Vue 3), which includes a photo editor and a camera. All made in Javascript! All cross-platform compatible!</p>
+<p>A good PWA is (nearly) indistinguishable from a native app. If you don’t need access to special native API’s or if you don’t need to absolute best CPU performance,  consider using a PWA instead of building seperate native apps. Furthermore, modern browsers support an increasing amount of device API’s. Below you can see an example of a phone app I made (also using Vue 3), which includes a photo editor and a camera. All made in Javascript! All cross-platform compatible!</p>
 
 <figure> 
         <img src="/assets/images/vue3coolfeatures.png" />

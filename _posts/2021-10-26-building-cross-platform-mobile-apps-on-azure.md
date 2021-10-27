@@ -21,8 +21,14 @@ Static Web Apps are the ideal solution for developers who want to get their webs
 
 If you have all the prerequisites listed below, you can have a working cross platform app working within 15 minutes. 
 
+<figure> 
+        <img src="/assets/images/architecture.jpg" style="min-width: 800px" />
+        <figcaption>Architecture</figcaption>
+</figure>
+
+
 ### The end result
-The end result is an app which we can access through the browser but also install as a android app. This app can also be deployed to the Apple app store.
+The end result of this tutorial is an app which we can access through the browser but which we can also install as a android app. 
 
 
 ### Prerequisites
@@ -169,7 +175,7 @@ Now what we have setup is a very simple basis on which we can develop a cross pl
 - and can also be deployed as an iOS app.
 - A single CI/CD pipeline can update the app for all platforms at once. 
 
-A good PWA is (nearly) indistinguishable from a native app. If you don’t need access to special native API’s or if you don’t need to absolute best CPU performance,  consider using a PWA instead of building seperate native apps. Furthermore,modern browsers support an increasing amount of device API’s. Below you can see an example of a phone app I made (also using Vue 3), which includes a photo editor and a camera. All made in Javascript! All cross-platform compatible!
+A good PWA is (nearly) indistinguishable from a native app. If you don’t need access to special native API’s or if you don’t need to absolute best CPU performance,  consider using a PWA instead of building seperate native apps. Furthermore, modern browsers support an increasing amount of device API’s. Below you can see an example of a phone app I made (also using Vue 3), which includes a photo editor and a camera. All made in Javascript! All cross-platform compatible!
 
 
 <figure> 
