@@ -8,24 +8,24 @@ description: "I think many people are not aware of the possiblities of running m
 
 # Creating a cross platform app on Azure and deploying it to the Play Store. 
 
-A PWA, short for Progressive Web App, is essentially a website which behaves like a native (e.g. Android, iOS or Windows) application. The website (or web app) uses Javascript to facilitate interactions with users. 
+A PWA, short for Progressive Web App, is essentially a website which behaves like a native (e.g. Android, iOS or Windows) application. The website (or web app) uses Javascript to facilitate interactions with users. Examples of these PWA's are apps like Office365 in the browser and Google Docs.
+
 Browsing through a classical website means loading entire pages over and over, whereas a PWA makes lightweight API calls to interact with a backend, and after receiving a response the browser then renders the page itself. 
 
-A big advantage of using a PWA is that you can use a single codebase and single CI/CD pipeline to deploy the app for multiple platforms. Because the page is rendered on the device (client side rendering) the backend can focus on returning data, and the app can be deployed as static HTML/CSS/Javascript website. PWA's also support concepts such as push notifications and *can work offline*.
+A big advantage of using a PWA is that you can use a single codebase and single CI/CD pipeline to serve the app to multiple platforms. Another advantage is that the page is rendered on the device, which is called client side rendering. The backend can then focus on returning data, and the app can be deployed as static HTML/CSS/Javascript website. PWA's also support concepts such as push notifications and can work offline aswell, by using [Service Workers](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Offline_Service_workers). But thats a bit too in depth for this tutorial.
 
 PWA’s are most commonly made using Javascript frameworks such as Vue, React and Angular. In this example I will use Vue, because thats what I’m most familiar with.
 
-We will deploy this Vue PWA using Azure Static Web Apps. 
-
-Static Web Apps are the ideal solution for developers who want to get their website up and running as quickly as possible. Out of the box this service will host your app, provide SSL encryption and create a CI/CD pipeline for you. Oh, and it’s very cheap too! Obviously we will use this service to deploy our PWA :)
-
-If you have all the prerequisites listed below, you can have a working cross platform app working within 15 minutes. 
+We will deploy this Vue PWA using Azure Static Web Apps. Static Web Apps are the ideal solution for developers who want to get their static website up and running quickly, because out of the box this service will host your app, provide SSL encryption and create a CI/CD pipeline for you. Oh, and it’s pretty cheap too!
 
 <figure> 
         <img src="/assets/images/architecture.jpg" style="min-width: 800px" />
         <figcaption>Architecture</figcaption>
 </figure>
 
+As you can see in the diagram, the same Static Web App is used to serve the webapp to various platforms. We will generate the various packages required to add the app to the different stores, by using pwabuilder.com
+
+If you have all the prerequisites listed below, you can have a working cross platform app working within 30 minutes. 
 
 ### The end result
 The end result of this tutorial is an app which we can access through the browser but which we can also install as a android app. 
@@ -107,7 +107,7 @@ Open the Static Web App you just created in the Azure Portal, and click the “B
 If all went well, you should see your Vue3 PWA, now accessible over the internet. If it is still “waiting for content”, your CI/CD pipeline may not be finished yet. Alternatively, check that you have provided the right repository, app location and that you have actually committed all the files to the repository.
 
 ### Creating an Android App from the static web app
-Microsoft has built an awesome tool, [PwaBuilder](https://www.pwabuilder.com), to convert web apps into phone apps. Browse to the site and enter the URL of your Static Web App. Click next and navigate to the Android package.
+Microsoft has built an awesome tool, [PwaBuilder](https://www.pwabuilder.com), to convert web apps into packages which can be uploaded to the various stores. Browse to the site and enter the URL of your Static Web App. Click next and navigate to the Android package.
 
 <figure> 
         <img src="/assets/images/vue3androidbutton.png"/>
@@ -121,7 +121,7 @@ Download the generated package and unzip it.
         <figcaption>Android Package</figcaption>
 </figure>
 
-The package contains 6 files. We will use two of them to upload our app to the play store. The assetlinks file is used to prove that the creator of the website has also created a phone app with which you can access it. This file prevents people from making phone apps from sites which they do not run. This file must always be accessible in the same path: https://YOURSITEURLHERE.com/.well-known/assetlinks.json
+The package contains 6 files. We will use two of them to upload our app to the play store. The assetlinks file is used to prove that whoever controls the website the app links to, also controls the app. This file prevents people from making phone apps from sites which they do not own. This file must always be accessible in the same path: https://YOURSITEURLHERE.com/.well-known/assetlinks.json
 
 <figure> 
         <img src="/assets/images/vue3dir.png"/>
@@ -157,7 +157,7 @@ After creating the internal release, navigate back to the “Internal Testing”
 Then copy the link and open it on your mobile device. You will be redirected to the Play Store page where you can download your app. Now download and run the app!
 
 ### Hey, there’s still a browser bar in my app!
-Most likely you will still see a browser bar in your app. So by now I think you will fully understand what is happening. This is just a website pretending to be a phone app? Well, kind of. Biggest difference is that this app can work offline aswell, by using [Service Workers](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Offline_Service_workers). But thats a bit too in depth for this tutorial.
+Most likely you will still see a browser bar in your app. So by now I think you will fully understand what is happening. This is just a website pretending to be a phone app? Well, kind of. The reason that there is still a browser app is that our Assetlinks file has not been updated yet. 
 
 Now lets make sure users don’t see this ugly browser bar in the app. 
 
