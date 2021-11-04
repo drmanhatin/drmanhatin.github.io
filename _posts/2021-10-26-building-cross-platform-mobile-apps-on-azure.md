@@ -30,6 +30,11 @@ If you have all the prerequisites listed below, you can have a working cross pla
 ### The end result
 The end result of this tutorial is an app which we can access through the browser but which we can also install as a android app. 
 
+## Dont like reading? This tutorial is also available in video form :)
+
+<div style="max-width: 100%">
+<iframe width="720" height="520" style="max-width: 100%" src="https://www.youtube.com/embed/t7l_WwV2r88" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 ### Prerequisites
 If you want to follow this tutorial, you'll need the following:

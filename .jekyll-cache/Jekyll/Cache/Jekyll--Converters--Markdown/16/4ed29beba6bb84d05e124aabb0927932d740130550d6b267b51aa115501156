@@ -1,4 +1,4 @@
-I"�=<h1 id="creating-a-cross-platform-app-on-azure-and-deploying-it-to-the-play-store">Creating a cross platform app on Azure and deploying it to the Play Store.</h1>
+I"R?<h1 id="creating-a-cross-platform-app-on-azure-and-deploying-it-to-the-play-store">Creating a cross platform app on Azure and deploying it to the Play Store.</h1>
 
 <p>A PWA, short for Progressive Web App, is essentially a website which behaves like a native (e.g. Android, iOS or Windows) application. The website (or web app) uses Javascript to facilitate interactions with users. Examples of these PWA’s are apps like Office365 in the browser and Google Docs.</p>
 
@@ -21,6 +21,12 @@
 
 <h3 id="the-end-result">The end result</h3>
 <p>The end result of this tutorial is an app which we can access through the browser but which we can also install as a android app.</p>
+
+<h2 id="dont-like-reading-this-tutorial-is-also-available-in-video-form-">Dont like reading? This tutorial is also available in video form :)</h2>
+
+<div style="max-width: 100%">
+<iframe width="720" height="520" style="max-width: 100%" src="https://www.youtube.com/embed/t7l_WwV2r88" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
 
 <h3 id="prerequisites">Prerequisites</h3>
 <p>If you want to follow this tutorial, you’ll need the following:</p>
