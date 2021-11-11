@@ -27,14 +27,19 @@ As you can see in the diagram, the same Static Web App is used to serve the weba
 
 If you have all the prerequisites listed below, you can have a working cross platform app working within 30 minutes. 
 
+
 ### The end result
 The end result of this tutorial is an app which we can access through the browser but which we can also install as a android app. 
 
-## Dont like reading? This tutorial is also available in video form :)
+<br/>
+
+### Dont like reading? This tutorial is also available in video form :)
 
 <div style="max-width: 100%">
 <iframe width="720" height="520" style="max-width: 100%" src="https://www.youtube.com/embed/t7l_WwV2r88" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+
+<br/>
 
 ### Prerequisites
 If you want to follow this tutorial, you'll need the following:
@@ -44,6 +49,7 @@ If you want to follow this tutorial, you'll need the following:
 - [NodeJS + NPM installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 - [Vue3 & Vue3 CLI installed](https://cli.vuejs.org/)
 
+<br/>
 
 ### Creating the project
 Vue supports a CLI with which you can create new projects. The command is ‘‘vue create $nameofapp”. Then, manually select features and tick the PWA support box.
@@ -61,17 +67,23 @@ A new project is created in your current directory. We won’t go too much in de
         <figcaption>Vue Directory Structure</figcaption>
 </figure>
 
+<br/>
 
-#### Package.json
+**Package.json**
+
 This file describes your project, what depencies are required to run it and what steps are performed to build and serve the project. 
 
-#### SRC directory
+
+**SRC directory**
+
 This directory contains the files which make up the PWA. At the root of this directory you can find App.vue, a Vue component file. Vue components are typically built up of three parts: 
 - a HTML template, describing what is in the page
 - some javascript code, where the logic on how to interact with the component is defined
 - a CSS stylesheet, which describes how the page looks like
 
 Now commit the project to a github repository, so we can get to the next step, which is deploying the project.
+
+<br/>
 
 ### Deploying the project
 We will deploy the project using Azure Static Web Apps. The easiest way to do this is through the portal. Link your Github account and select the repository you have uploaded the Vue3 app to.  
@@ -111,6 +123,8 @@ Open the Static Web App you just created in the Azure Portal, and click the “B
 
 If all went well, you should see your Vue3 PWA, now accessible over the internet. If it is still “waiting for content”, your CI/CD pipeline may not be finished yet. Alternatively, check that you have provided the right repository, app location and that you have actually committed all the files to the repository.
 
+<br/>
+
 ### Creating an Android App from the static web app
 Microsoft has built an awesome tool, [PwaBuilder](https://www.pwabuilder.com), to convert web apps into packages which can be uploaded to the various stores. Browse to the site and enter the URL of your Static Web App. Click next and navigate to the Android package.
 
@@ -137,6 +151,7 @@ We will create a .well-known folder in the public folder of the Vue project and 
 
 The .aab file contains our actual Android app. The last step is to upload this file to the Play Store.
 
+<br/>
 
 ### Creating a Play Store app
 This is probably the most time consuming step of the project, as you may need to create a developer account on the [Google Play Console](https://play.google.com/)
@@ -160,6 +175,8 @@ Now the last step is to create an internal release of this app, so we can allow 
 After creating the internal release, navigate back to the “Internal Testing” page and add some testers (maybe yourself?). 
 
 Then copy the link and open it on your mobile device. You will be redirected to the Play Store page where you can download your app. Now download and run the app!
+
+<br/>
 
 ### Hey, there’s still a browser bar in my app!
 Most likely you will still see a browser bar in your app. So by now I think you will fully understand what is happening. This is just a website pretending to be a phone app? Well, kind of. The reason that there is still a browser app is that our Assetlinks file has not been updated yet. 

@@ -1,4 +1,8 @@
-I"‰
+I"¾
+<h2 id="oct-26-2021--creating-your-own-image-background-removal-api--removebg-clone"><a href="/azure/functions/remove.bg/clone/2021/10/26/removing-the-background-of-an-image-using-azure-functions-and-AI.html">Oct 26, 2021 | Creating your own image background removal API | Remove.bg clone</a></h2>
+<p>For an app I have made, I was looking for an API with which you could remove the background of an image. I found a few but most of them charge around 20 eurocents per image which I found far tooS much. So I started looking for an alternative solution.</p>
+<hr />
+
 <h2 id="oct-26-2021--creating-a-cross-platform-app-on-azure-and-deploying-it-to-the-play-store"><a href="/azure/static/web/app/pwa/cross/platform/2021/10/26/building-cross-platform-mobile-apps-on-azure.html">Oct 26, 2021 | Creating a cross platform app on Azure and deploying it to the Play Store.</a></h2>
 <p>I think many people are not aware of the possiblities of running mobile apps on Azure. In this blogpost I will demonstrate how easy it is to build mobile apps on Azure and get them into the play store</p>
 <hr />

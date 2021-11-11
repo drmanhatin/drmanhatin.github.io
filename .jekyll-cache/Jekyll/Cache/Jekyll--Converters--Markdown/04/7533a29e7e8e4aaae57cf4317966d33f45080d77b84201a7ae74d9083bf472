@@ -1,4 +1,4 @@
-I"R?<h1 id="creating-a-cross-platform-app-on-azure-and-deploying-it-to-the-play-store">Creating a cross platform app on Azure and deploying it to the Play Store.</h1>
+I"/@<h1 id="creating-a-cross-platform-app-on-azure-and-deploying-it-to-the-play-store">Creating a cross platform app on Azure and deploying it to the Play Store.</h1>
 
 <p>A PWA, short for Progressive Web App, is essentially a website which behaves like a native (e.g. Android, iOS or Windows) application. The website (or web app) uses Javascript to facilitate interactions with users. Examples of these PWA’s are apps like Office365 in the browser and Google Docs.</p>
 
@@ -22,11 +22,15 @@
 <h3 id="the-end-result">The end result</h3>
 <p>The end result of this tutorial is an app which we can access through the browser but which we can also install as a android app.</p>
 
-<h2 id="dont-like-reading-this-tutorial-is-also-available-in-video-form-">Dont like reading? This tutorial is also available in video form :)</h2>
+<p><br /></p>
+
+<h3 id="dont-like-reading-this-tutorial-is-also-available-in-video-form-">Dont like reading? This tutorial is also available in video form :)</h3>
 
 <div style="max-width: 100%">
 <iframe width="720" height="520" style="max-width: 100%" src="https://www.youtube.com/embed/t7l_WwV2r88" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 </div>
+
+<p><br /></p>
 
 <h3 id="prerequisites">Prerequisites</h3>
 <p>If you want to follow this tutorial, you’ll need the following:</p>
@@ -37,6 +41,8 @@
   <li><a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">NodeJS + NPM installed</a></li>
   <li><a href="https://cli.vuejs.org/">Vue3 &amp; Vue3 CLI installed</a></li>
 </ul>
+
+<p><br /></p>
 
 <h3 id="creating-the-project">Creating the project</h3>
 <p>Vue supports a CLI with which you can create new projects. The command is ‘‘vue create $nameofapp”. Then, manually select features and tick the PWA support box.</p>
@@ -53,10 +59,14 @@
         <figcaption>Vue Directory Structure</figcaption>
 </figure>
 
-<h4 id="packagejson">Package.json</h4>
+<p><br /></p>
+
+<p><strong>Package.json</strong></p>
+
 <p>This file describes your project, what depencies are required to run it and what steps are performed to build and serve the project.</p>
 
-<h4 id="src-directory">SRC directory</h4>
+<p><strong>SRC directory</strong></p>
+
 <p>This directory contains the files which make up the PWA. At the root of this directory you can find App.vue, a Vue component file. Vue components are typically built up of three parts:</p>
 <ul>
   <li>a HTML template, describing what is in the page</li>
@@ -65,6 +75,8 @@
 </ul>
 
 <p>Now commit the project to a github repository, so we can get to the next step, which is deploying the project.</p>
+
+<p><br /></p>
 
 <h3 id="deploying-the-project">Deploying the project</h3>
 <p>We will deploy the project using Azure Static Web Apps. The easiest way to do this is through the portal. Link your Github account and select the repository you have uploaded the Vue3 app to.</p>
@@ -101,6 +113,8 @@
 
 <p>If all went well, you should see your Vue3 PWA, now accessible over the internet. If it is still “waiting for content”, your CI/CD pipeline may not be finished yet. Alternatively, check that you have provided the right repository, app location and that you have actually committed all the files to the repository.</p>
 
+<p><br /></p>
+
 <h3 id="creating-an-android-app-from-the-static-web-app">Creating an Android App from the static web app</h3>
 <p>Microsoft has built an awesome tool, <a href="https://www.pwabuilder.com">PwaBuilder</a>, to convert web apps into packages which can be uploaded to the various stores. Browse to the site and enter the URL of your Static Web App. Click next and navigate to the Android package.</p>
 
@@ -127,6 +141,8 @@
 
 <p>The .aab file contains our actual Android app. The last step is to upload this file to the Play Store.</p>
 
+<p><br /></p>
+
 <h3 id="creating-a-play-store-app">Creating a Play Store app</h3>
 <p>This is probably the most time consuming step of the project, as you may need to create a developer account on the <a href="https://play.google.com/">Google Play Console</a></p>
 
@@ -149,6 +165,8 @@
 <p>After creating the internal release, navigate back to the “Internal Testing” page and add some testers (maybe yourself?).</p>
 
 <p>Then copy the link and open it on your mobile device. You will be redirected to the Play Store page where you can download your app. Now download and run the app!</p>
+
+<p><br /></p>
 
 <h3 id="hey-theres-still-a-browser-bar-in-my-app">Hey, there’s still a browser bar in my app!</h3>
 <p>Most likely you will still see a browser bar in your app. So by now I think you will fully understand what is happening. This is just a website pretending to be a phone app? Well, kind of. The reason that there is still a browser app is that our Assetlinks file has not been updated yet.</p>
@@ -207,12 +225,12 @@ Copy the SHA-256 certificate fingerprint. Now go back to your Vue project and op
 </style>
 
 <div id="share-buttons">
-<div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=/azure/static/web/app/pwa/cross/platform/2021/10/26/building-cross-platform-mobile-apps-on-azure.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" /></svg></div>
-<div class="twitter" title="Share this on Twitter" onclick="window.open('http://twitter.com/intent/tweet?text=/azure/static/web/app/pwa/cross/platform/2021/10/26/building-cross-platform-mobile-apps-on-azure.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" /></svg></div>
-<div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=/azure/static/web/app/pwa/cross/platform/2021/10/26/building-cross-platform-mobile-apps-on-azure.html&amp;title=&amp;summary=&amp;source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" /></svg></div>
+<div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=http://localhost:4000/azure/static/web/app/pwa/cross/platform/2021/10/26/building-cross-platform-mobile-apps-on-azure.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" /></svg></div>
+<div class="twitter" title="Share this on Twitter" onclick="window.open('http://twitter.com/intent/tweet?text=http://localhost:4000/azure/static/web/app/pwa/cross/platform/2021/10/26/building-cross-platform-mobile-apps-on-azure.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" /></svg></div>
+<div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:4000/azure/static/web/app/pwa/cross/platform/2021/10/26/building-cross-platform-mobile-apps-on-azure.html&amp;title=&amp;summary=&amp;source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" /></svg></div>
 
-<div class="gplus" title="Share this on Google Plus" onclick="window.open('https://plus.google.com/share?url=/azure/static/web/app/pwa/cross/platform/2021/10/26/building-cross-platform-mobile-apps-on-azure.html');"><svg viewBox="0 0 2304 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1437 913q0 208-87 370.5t-248 254-369 91.5q-149 0-285-58t-234-156-156-234-58-285 58-285 156-234 234-156 285-58q286 0 491 192l-199 191q-117-113-292-113-123 0-227.5 62t-165.5 168.5-61 232.5 61 232.5 165.5 168.5 227.5 62q83 0 152.5-23t114.5-57.5 78.5-78.5 49-83 21.5-74h-416v-252h692q12 63 12 122zm867-122v210h-209v209h-210v-209h-209v-210h209v-209h210v209h209z" /></svg></div>
-<div class="mail" title="Share this through Email" onclick="window.open('mailto:?&amp;body=/azure/static/web/app/pwa/cross/platform/2021/10/26/building-cross-platform-mobile-apps-on-azure.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1792 710v794q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-794q44 49 101 87 362 246 497 345 57 42 92.5 65.5t94.5 48 110 24.5h2q51 0 110-24.5t94.5-48 92.5-65.5q170-123 498-345 57-39 100-87zm0-294q0 79-49 151t-122 123q-376 261-468 325-10 7-42.5 30.5t-54 38-52 32.5-57.5 27-50 9h-2q-23 0-50-9t-57.5-27-52-32.5-54-38-42.5-30.5q-91-64-262-182.5t-205-142.5q-62-42-117-115.5t-55-136.5q0-78 41.5-130t118.5-52h1472q65 0 112.5 47t47.5 113z" /></svg></div>
+<div class="gplus" title="Share this on Google Plus" onclick="window.open('https://plus.google.com/share?url=http://localhost:4000/azure/static/web/app/pwa/cross/platform/2021/10/26/building-cross-platform-mobile-apps-on-azure.html');"><svg viewBox="0 0 2304 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1437 913q0 208-87 370.5t-248 254-369 91.5q-149 0-285-58t-234-156-156-234-58-285 58-285 156-234 234-156 285-58q286 0 491 192l-199 191q-117-113-292-113-123 0-227.5 62t-165.5 168.5-61 232.5 61 232.5 165.5 168.5 227.5 62q83 0 152.5-23t114.5-57.5 78.5-78.5 49-83 21.5-74h-416v-252h692q12 63 12 122zm867-122v210h-209v209h-210v-209h-209v-210h209v-209h210v209h209z" /></svg></div>
+<div class="mail" title="Share this through Email" onclick="window.open('mailto:?&amp;body=http://localhost:4000/azure/static/web/app/pwa/cross/platform/2021/10/26/building-cross-platform-mobile-apps-on-azure.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1792 710v794q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-794q44 49 101 87 362 246 497 345 57 42 92.5 65.5t94.5 48 110 24.5h2q51 0 110-24.5t94.5-48 92.5-65.5q170-123 498-345 57-39 100-87zm0-294q0 79-49 151t-122 123q-376 261-468 325-10 7-42.5 30.5t-54 38-52 32.5-57.5 27-50 9h-2q-23 0-50-9t-57.5-27-52-32.5-54-38-42.5-30.5q-91-64-262-182.5t-205-142.5q-62-42-117-115.5t-55-136.5q0-78 41.5-130t118.5-52h1472q65 0 112.5 47t47.5 113z" /></svg></div>
 </div>
 
 :ET

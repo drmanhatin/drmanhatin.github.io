@@ -12,6 +12,8 @@ For a customer I was tasked to demonstrate the capabilities of [Azure's CustomVi
 
 If you follow this tutorial from front to back, you can expect to have a working model within a few hours. 
 
+<br/>
+
 ### This is the end result
 <div style="max-width: 100%">
 <iframe width="560" height="560" style="max-width: 100%" src="https://www.youtube.com/embed/t0P6LBDkSlc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -28,6 +30,7 @@ On a technical level, what happens in this video is this:
 1. The labels are drawn over the camera screen in the browser
    
 This process typically takes between 1 to 2 seconds per picture, depending on the network speed, device speed and the size of the picture.
+<br/>
 
 ### How to teach CustomVision to recognize different chess pieces
 
@@ -41,7 +44,7 @@ Next step is to take pictures of your chess pieces. In order to be as efficient 
 * Label photos accurately, draw the bounding boxes as close to the pieces as possible
 
  then you can label multiple chess pieces at the same time and at different angles. As such:
-
+<br/>
  <figure> 
         <img src="/assets/images/chess-1.png"/>
         <figcaption> Multiple chess pieces labeled in the same picture.</figcaption>
@@ -53,8 +56,7 @@ A minimum of 15 images per "tag" (type of object, in this case a rook, bishop, p
         <figcaption>A pawn</figcaption>
 </figure>
 
-
-
+<br/>
 Once you have labeled all your pictures, click "train" in the top right corner of the CustomVision portal and select "Quick Training". After a few minutes, the training will finish. In the "Performance" tab of the portal, you can see how the model has performed. If you want to test the model "in realtime", click "Publish". Then, click on the "Prediction URL" button. Here you can find the URL + key, which you will require in the next step. 
 
 <figure> 
@@ -62,7 +64,7 @@ Once you have labeled all your pictures, click "train" in the top right corner o
         <figcaption>The endpoints created by CustomVision</figcaption>
 </figure>
 
-
+<br/>
 
 In the "Performance" tab I have selected a probability threshold of 70%, this means that if the label is less than 70% certain, it won't count as a good result. I have also selected an overlap threshold of 50%, which means that the detected label bounding box should overlap at least 50% with the bounding box you have created in the portal, else it will not count as a good result either. After about 160 images and 24 hours of training, this is the result:
 ![prediction stats](/assets/images/prediction.png)
