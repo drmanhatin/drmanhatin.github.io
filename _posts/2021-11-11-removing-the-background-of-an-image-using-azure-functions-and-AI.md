@@ -9,10 +9,15 @@ So I started looking for an alternative solution."
 
 # Creating your own image background removal API
 
+### This article is available in video form aswell
+<iframe width="720" height="720" src="https://www.youtube.com/embed/0p6Q15ks7Dw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 For an app I have made, I was looking for an API with which you could remove the background of an image. I found a few but most of them charge around 20 eurocents per image which I found far too much. 
 So I started looking for an alternative solution. Whilst googling I ran into a github repository called ["image-background-remove-tool"](https://github.com/OPHoperHPO/image-background-remove-tool).
 
 This repository contains a python command line application with which you can remove backgrounds from images.
+
+
 
 
 <figure> 
@@ -26,9 +31,9 @@ This repository contains a python command line application with which you can re
         <figcaption> Cat without background.</figcaption>
 </figure>
 
+In the two images above you can see the result of processing an image with the image-background-remove-tool. I think the result is pretty good! 
 
-
- Perfect, right? Now I want to be able to communicate with this application over HTTP instead of using the command line. I also need to deploy it in a scalable manner - removing backgrounds is pretty CPU intensive work. And that's where Azure Functions are very useful!
+Now I want to be able to communicate with this application over HTTP instead of using the command line. I also need to deploy it in a scalable manner - removing backgrounds is pretty CPU intensive work. And that's where Azure Functions are very useful!
 
 <br/><br/>
 
@@ -48,10 +53,13 @@ to handle requests. Then, if the user tries to remove the background of an image
 
 ## How I converted the image-background-remove-tool to an Azure Function
 Now the image-background-remove-tool is a console line application. 
-If you open the main.py method, that is where the magic happens:
-`def process(input_path, output_path, model_name="u2net",
-            preprocessing_method_name="bbd-fastrcnn", postprocessing_method_name="rtb-bnb"):`
+If you open the main.py file, the process method is where the magic happens:
 
+```
+def process(input_path, output_path, model_name="u2net",
+    preprocessing_method_name="bbd-fastrcnn", postprocessing_method_name="rtb-bnb")
+
+```
 As you can see this method receives a input path to the image to process. It also expects an output_path, so where to write the processed image.
 
 Now the steps I went through to convert the application into an Azure Function are as follows:
@@ -59,8 +67,7 @@ Now the steps I went through to convert the application into an Azure Function a
 2. Copied the repository into the Azure Function
 3. Edited the main function:
 
-
-``` 
+ 
 def main(req: func.HttpRequest) -> func.HttpResponse:
 
     #generate unique path, to avoid possible collision 

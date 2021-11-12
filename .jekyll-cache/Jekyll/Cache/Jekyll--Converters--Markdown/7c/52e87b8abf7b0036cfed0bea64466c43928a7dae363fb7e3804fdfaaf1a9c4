@@ -1,4 +1,4 @@
-I"v<h1 id="creating-your-own-image-background-removal-api">Creating your own image background removal API</h1>
+I"�<h1 id="creating-your-own-image-background-removal-api">Creating your own image background removal API</h1>
 
 <p>For an app I have made, I was looking for an API with which you could remove the background of an image. I found a few but most of them charge around 20 eurocents per image which I found far too much. 
 So I started looking for an alternative solution. Whilst googling I ran into a github repository called <a href="https://github.com/OPHoperHPO/image-background-remove-tool">“image-background-remove-tool”</a>.</p>
@@ -7,15 +7,17 @@ So I started looking for an alternative solution. Whilst googling I ran into a g
 
 <figure> 
         <img src="/assets/images/kitty.jpg" />
-        <figcaption> Multiple chess pieces labeled in the same picture.</figcaption>
+        <figcaption> Cat with background.</figcaption>
 </figure>
 
 <figure> 
-        <img src="/assets/images/transpcat.jpeg" />
-        <figcaption> Multiple chess pieces labeled in the same picture.</figcaption>
+        <img src="/assets/images/transpcat.png" />
+        <figcaption> Cat without background.</figcaption>
 </figure>
 
-<p>Perfect, right? Now I want to be able to communicate with this application over HTTP instead of using the command line. I also need to deploy it in a scalable manner - removing backgrounds is pretty CPU intensive work. And that’s where Azure Functions are very useful!</p>
+<p>In the two images above you can see the result of processing an image with the image-background-remove-tool. I think the result is pretty good!</p>
+
+<p>Now I want to be able to communicate with this application over HTTP instead of using the command line. I also need to deploy it in a scalable manner - removing backgrounds is pretty CPU intensive work. And that’s where Azure Functions are very useful!</p>
 
 <p><br /><br /></p>
 

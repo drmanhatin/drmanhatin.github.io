@@ -3,6 +3,18 @@
 
 @import 'jekyll-theme-architect';
 
+@font-face {
+    font-family: SourceSansPro;
+    src: url(/assets/fonts/SourceSansPro-Regular.ttf) 
+}
+
+  
+
 figcaption {
     font-size: 11px;
 }
+
+h1, h2, h3, h4, h5 {
+    font-family: 'SourceSansPro' !important;
+}
+

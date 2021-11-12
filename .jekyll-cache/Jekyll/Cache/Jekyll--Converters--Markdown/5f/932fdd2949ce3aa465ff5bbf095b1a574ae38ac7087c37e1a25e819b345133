@@ -1,4 +1,7 @@
-I"�<h1 id="creating-your-own-image-background-removal-api">Creating your own image background removal API</h1>
+I"<h1 id="creating-your-own-image-background-removal-api">Creating your own image background removal API</h1>
+
+<h3 id="this-article-is-available-in-video-form-aswell">This article is available in video form aswell</h3>
+<iframe width="1024" height="720" src="https://www.youtube.com/embed/0p6Q15ks7Dw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
 <p>For an app I have made, I was looking for an API with which you could remove the background of an image. I found a few but most of them charge around 20 eurocents per image which I found far too much. 
 So I started looking for an alternative solution. Whilst googling I ran into a github repository called <a href="https://github.com/OPHoperHPO/image-background-remove-tool">“image-background-remove-tool”</a>.</p>
@@ -6,11 +9,18 @@ So I started looking for an alternative solution. Whilst googling I ran into a g
 <p>This repository contains a python command line application with which you can remove backgrounds from images.</p>
 
 <figure> 
-        <img src="/assets/images/cat.png" />
-        <figcaption> Multiple chess pieces labeled in the same picture.</figcaption>
+        <img src="/assets/images/kitty.jpg" />
+        <figcaption> Cat with background.</figcaption>
 </figure>
 
-<p>Perfect, right? Now I want to be able to communicate with this application over HTTP instead of using the command line. I also need to deploy it in a scalable manner - removing backgrounds is pretty CPU intensive work. And that’s where Azure Functions are very useful!</p>
+<figure> 
+        <img src="/assets/images/transpcat.png" />
+        <figcaption> Cat without background.</figcaption>
+</figure>
+
+<p>In the two images above you can see the result of processing an image with the image-background-remove-tool. I think the result is pretty good!</p>
+
+<p>Now I want to be able to communicate with this application over HTTP instead of using the command line. I also need to deploy it in a scalable manner - removing backgrounds is pretty CPU intensive work. And that’s where Azure Functions are very useful!</p>
 
 <p><br /><br /></p>
 
@@ -29,10 +39,12 @@ to handle requests. Then, if the user tries to remove the background of an image
 
 <h2 id="how-i-converted-the-image-background-remove-tool-to-an-azure-function">How I converted the image-background-remove-tool to an Azure Function</h2>
 <p>Now the image-background-remove-tool is a console line application. 
-If you open the main.py method, that is where the magic happens:
-<code class="language-plaintext highlighter-rouge">def process(input_path, output_path, model_name="u2net",
-            preprocessing_method_name="bbd-fastrcnn", postprocessing_method_name="rtb-bnb"):</code></p>
+If you open the main.py file, the process method is where the magic happens:</p>
 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def process(input_path, output_path, model_name="u2net",
+    preprocessing_method_name="bbd-fastrcnn", postprocessing_method_name="rtb-bnb")
+
+</code></pre></div></div>
 <p>As you can see this method receives a input path to the image to process. It also expects an output_path, so where to write the processed image.</p>
 
 <p>Now the steps I went through to convert the application into an Azure Function are as follows:</p>
@@ -42,37 +54,37 @@ If you open the main.py method, that is where the magic happens:
   <li>Edited the main function:</li>
 </ol>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def main(req: func.HttpRequest) -&gt; func.HttpResponse:
+<p>def main(req: func.HttpRequest) -&gt; func.HttpResponse:</p>
 
-    #generate unique path, to avoid possible collision 
-    input_path = get_random_string(8)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#generate unique path, to avoid possible collision 
+input_path = get_random_string(8)
+
+#if the body is too small, just use a temporary cat image 
+#(for development &amp; load testing purposes)
+if(req.get_body().__len__()  &lt; 5): 
+    input_path = "tempImagePath.jpg"
+
+ 
+else:  
+    #create a temporary file to store the image which is in the request body
+    fp = tempfile.NamedTemporaryFile(delete=False, suffix=".jpg" )
+    fp.write(req.get_body())
+    fp.close()
+    input_path = fp.name
     
-    #if the body is too small, just use a temporary cat image 
-    #(for development &amp; load testing purposes)
-    if(req.get_body().__len__()  &lt; 5): 
-        input_path = "tempImagePath.jpg"
+#setup a file to store the image without background
+op = tempfile.NamedTemporaryFile(delete=False, suffix=".png")  
+output_path = op.name
+op.close()
 
-     
-    else:  
-        #create a temporary file to store the image which is in the request body
-        fp = tempfile.NamedTemporaryFile(delete=False, suffix=".jpg" )
-        fp.write(req.get_body())
-        fp.close()
-        input_path = fp.name
-        
-    #setup a file to store the image without background
-    op = tempfile.NamedTemporaryFile(delete=False, suffix=".png")  
-    output_path = op.name
-    op.close()
-    
-    #process it, just as if the app is being called over the command line
-    process(input_path, output_path)
+#process it, just as if the app is being called over the command line
+process(input_path, output_path)
 
-    #finally return the image without background
-    resp = func.HttpResponse(body=open(output_path, 'rb').read(), 
-    mimetype="image/png")
+#finally return the image without background
+resp = func.HttpResponse(body=open(output_path, 'rb').read(), 
+mimetype="image/png")
 
-    return resp
+return resp ```
 </code></pre></div></div>
 
 <p><br /><br /></p>
