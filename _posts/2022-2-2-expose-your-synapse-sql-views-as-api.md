@@ -19,7 +19,12 @@ User can query a specific view, in a specific schema, using the {schema} and {vi
 
 
 # Architecture/Token Flow
-![permissions](./images/tokenflow.png)
+
+<figure> 
+        <img src="/assets/images/tokenflow.jpg" />
+        <figcaption>Architecture</figcaption>
+</figure>
+
 User flow: 
 1. User opens SPA hosted in Azure Static Web App
 2. User logs in to Active Directory 
