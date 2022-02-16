@@ -1,4 +1,4 @@
-# This is not production ready code, only a demonstration of how you can build a dynamic API to interface with a SQL database.
+# Exposing your Azure Synapse database views as a rest api
 For a customer I was tasked with figuring out an easy way of exposing some database views as an API.
 
 The solution I came up with consists of three components:
