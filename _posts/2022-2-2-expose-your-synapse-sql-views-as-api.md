@@ -1,4 +1,4 @@
-# Exposing your Azure Synapse database views as a rest api
+#  (Work In Progress) Exposing your Azure Synapse database views as a rest api
 For a customer I was tasked with figuring out an easy way of exposing some database views as an API.
 
 The solution I came up with consists of three components:
