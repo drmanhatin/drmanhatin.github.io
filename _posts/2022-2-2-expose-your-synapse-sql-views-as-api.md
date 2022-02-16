@@ -21,7 +21,7 @@ User can query a specific view, in a specific schema, using the {schema} and {vi
 # Architecture/Token Flow
 
 <figure> 
-        <img src="/assets/images/tokenflow.jpg" />
+        <img src="/assets/images/tokenflow.png" />
         <figcaption>Token flow</figcaption>
 </figure>
 
