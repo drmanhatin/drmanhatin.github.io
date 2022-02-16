@@ -22,7 +22,7 @@ User can query a specific view, in a specific schema, using the {schema} and {vi
 
 <figure> 
         <img src="/assets/images/tokenflow.jpg" />
-        <figcaption>Architecture</figcaption>
+        <figcaption>Token flow</figcaption>
 </figure>
 
 User flow: 
@@ -106,7 +106,11 @@ Using SQLKata it is trivial to add more filtering options.
 The active directory configuration for this POC consists of three parts, an app registration for the SPA, an app registration for the service principal (application calling the api) and an app registration for the backend (the azure function which is being called).
 
 WebApi is the app registration for the backend. Its permissions look as following: 
-![permissions](./images/backendreg.png)
+
+<figure> 
+        <img src="/assets/images/backendreg.png" />
+        <figcaption>Azure Backend Registration</figcaption>
+</figure>
 
 If you have trouble finding the SQL permissions, you can add them to the backend using this command: 
 
@@ -116,11 +120,19 @@ Be sure to replace the first id *4a655c68-c7ec-4f3d-ab1f-463125368f9a* with your
 
 After adding these permissions, expose the api:
 
-![permissions](./images/azuresqlperm.png)
+
+<figure> 
+        <img src="/assets/images/azuresqlperm.png" />
+        <figcaption>Azure SQL Permissions</figcaption>
+</figure>
 
 Now the permissions of the app registration for the service principal and the SPA look like this: 
 
-![permissions](./images/callerappreg.png)
+
+<figure> 
+        <img src="/assets/images/callerappreg.png" />
+        <figcaption>Caller App Registration</figcaption>
+</figure>
 
 # SPA 
 
