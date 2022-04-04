@@ -1,7 +1,8 @@
-## Exposing your Azure Synapse database views as a rest api while enabling use of row level security
+## Exposing your Azure Synapse database views as an API while enabling use of row level security
 For a customer I was tasked with figuring out an easy way of exposing some database views as an API. Aside of the usual functionality such as limiting and filtering using parameters, the API should also use the identity of the caller to connect to the database. By doing this, the API can make use of the database row level security functionality, which is a method of keeping track who can access which rows in the database.  For example, you can ensure that workers access only those data rows that are pertinent to their department. Another example is to restrict customers' data access to only the data relevant to their company.
 
 The solution I came up with consists of four components:
+
 #### To host the logic:
 - Azure Function, for translating HTTP requests into SQL queries, and for managing access to the database
 - Single Page Application, for calling the API in a browser, using a AD user identity
@@ -27,6 +28,18 @@ User can query a specific view, in a specific schema, using the {schema} and {vi
 A user can also provide options in the querystring of the request. These options are translated to a SQL query using [SQLKata](https://sqlkata.com/docs).
 Example: http://localhost:7071/api/schema/api-test/view/meta.getAllColumns?offset=0&limit=5&where={'column':'name','operator':'=','value':'rsid'}",
 This request will get the first 5 rows out of the meta.getAllColumns view. Furthermore, it will only return the rows of which the name column is equal to rsid. 
+
+
+Connection uses the accesstoken received from Azure Active Directory to setup a connection the database as illustrated below: 
+
+```   
+        SqlConnection connection = new SqlConnection(builder.ConnectionString);
+    
+        connection.AccessToken = _databaseAccessToken;
+        connection.Open();
+        return connection;
+```
+
 
 ### Architecture/Token Flow
 <figure> 
@@ -133,7 +146,7 @@ Now the permissions of the app registration for the service principal and the SP
 
 
 ### Github structure
-You can find the code used to build this application in a Github repository. This is just a proof of concept, no production grade code. But I think if you want to build something similar it might be useful!
+You can find the code used to build this application in my Github repository. This is just a proof of concept, no production grade code. But I think if you want to build something similar it might be useful!
 
 *SqlRestFunction*
 This folder contains the code of the Azure function. Example config is in example.local.settings.json. As mentioned before it's built using  .NET Framework 5.
