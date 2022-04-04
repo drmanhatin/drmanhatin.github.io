@@ -34,7 +34,7 @@ This request will get the first 5 rows out of the meta.getAllColumns view. Furth
         <figcaption>Token flow</figcaption>
 </figure>
 
-User flow: 
+#### User flow: 
 1. User opens Single Page Application hosted in Azure Static Web App
 2. User logs in to Active Directory 
 3. Token is stored in browser session
@@ -46,7 +46,7 @@ User flow:
 9. Function App converts results into JSON
 10. Function app returns data
 
-Application flow (green):
+#### Application flow (green):
 1. App gets access token from Active Directory
 2. App makes call to function app with token
 3. Function App verifies token
@@ -133,18 +133,18 @@ Now the permissions of the app registration for the service principal and the SP
 
 
 ### Github structure
-You can find the code used to build this application in a Github repository. This is just a proof of concept, no production grade done. But I think if you want to build something similar it might be useful!
+You can find the code used to build this application in a Github repository. This is just a proof of concept, no production grade code. But I think if you want to build something similar it might be useful!
 
-### SqlRestFunction
+#### SqlRestFunction
 This folder contains the code of the Azure function. Example config is in example.local.settings.json. As mentioned before it's built using  .NET Framework 5.
 
-### SPA 
+#### SPA 
 The single page application is a simple HTML/Javascript page. It is currently hosted using Azure Static Web Apps. It allows the user to sign in to Active Directory, it stores this token and uses it when sending requests to the azure function.
 
-### Application API Caller
+#### Application API Caller
 This is a small demonstration of how a service principal could call the Azure Function. It is written in NodeJS.
 
-#### Possible improvements/todos before taking this to production
+### Possible improvements/todos before taking this to production
 - Add proper pagination defaults (e.g. dont allow user to get over 100 rows at once)
 - Allow end user to discover API options through API
 - Store connection objects so you can reuse the same connection instead of opening/closing the db connection for every request
