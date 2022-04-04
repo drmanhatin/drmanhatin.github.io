@@ -30,7 +30,7 @@ GetView route:
 User can query a specific view, in a specific schema, using the {schema} and {view} parameters. 
 
 A user can also provide options in the querystring of the request. These options are translated to a SQL query using [SQLKata](https://sqlkata.com/docs).
-Example: http://localhost:7071/api/schema/api-test/view/meta.getAllColumns?offset=0&limit=5&where={'column':'name','operator':'=','value':'rsid'}",
+Example: `http://localhost:7071/api/schema/api-test/view/meta.getAllColumns?offset=0&limit=5&where={'column':'name','operator':'=','value':'rsid'}"`,
 This request will get the first 5 rows out of the meta.getAllColumns view. Furthermore, it will only return the rows of which the name column is equal to rsid. 
 
 Connection uses the accesstoken received from Azure Active Directory to setup a connection the database as illustrated below: 
