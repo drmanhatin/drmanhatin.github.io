@@ -36,7 +36,7 @@ This request will get the first 5 rows out of the meta.getAllColumns view. Furth
 
 #### User flow: 
 1. User opens Single Page Application hosted in Azure Static Web App
-2. User logs in to Active Directory 
+2. User logs in to Azure Active Directory 
 3. Token is stored in browser session
 4. User makes call to function app with token
 5. Function App verifies token
@@ -47,7 +47,7 @@ This request will get the first 5 rows out of the meta.getAllColumns view. Furth
 10. Function app returns data
 
 #### Application flow (green):
-1. App gets access token from Active Directory
+1. App gets access token from Azure Active Directory, using its credentials
 2. App makes call to function app with token
 3. Function App verifies token
 4. Function App translates request to SQL query, using querystring
@@ -99,8 +99,8 @@ foreach(string key in queryDictionary.Keys)
 This piece of code is responsible for translating the querystring into a SQL query. As you can see its concise and easy to read.
 Using SQLKata it is trivial to add more filtering options. 
 
-### Active Directory
-The active directory configuration for this POC consists of three parts, an app registration for the SPA, an app registration for the service principal (application calling the api) and an app registration for the backend (the azure function which is being called).
+### Azure Active Directory
+The Azure Active Directory configuration for this POC consists of three parts, an app registration for the SPA, an app registration for the service principal (application calling the api) and an app registration for the backend (the azure function which is being called).
 
 WebApi is the app registration for the backend. Its permissions look as following: 
 
@@ -139,7 +139,7 @@ You can find the code used to build this application in a Github repository. Thi
 This folder contains the code of the Azure function. Example config is in example.local.settings.json. As mentioned before it's built using  .NET Framework 5.
 
 #### SPA 
-The single page application is a simple HTML/Javascript page. It is currently hosted using Azure Static Web Apps. It allows the user to sign in to Active Directory, it stores this token and uses it when sending requests to the azure function.
+The single page application is a simple HTML/Javascript page. It is currently hosted using Azure Static Web Apps. It allows the user to sign in to Azure Active Directory, it stores this token and uses it when sending requests to the azure function.
 
 #### Application API Caller
 This is a small demonstration of how a service principal could call the Azure Function. It is written in NodeJS.
