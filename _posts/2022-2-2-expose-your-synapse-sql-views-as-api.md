@@ -1,5 +1,5 @@
 ## Exposing your Azure Synapse database views as an API while enabling use of row level security
-For a customer I was tasked with figuring out an easy way of exposing some database views as an API. Aside of the usual functionality such as limiting and filtering using parameters, the API should also use the identity of the caller to connect to the database. By doing this, the API can make use of the database row level security functionality, which is a method of keeping track who can access which rows in the database.  For example, you can ensure that workers access only those data rows that are pertinent to their department. Another example is to restrict customers' data access to only the data relevant to their company.
+For a customer I was tasked with figuring out an easy way of exposing some database views as an API. Aside of the usual functionality such as limiting and filtering using parameters, the API should also use the identity of the caller to connect to the database. By doing this, the API can make use of the database row level security functionality, which is a method of keeping track who can access which rows in the database.  For example, you can ensure that workers access only those data rows that are pertinent to their department. Another example is to restrict customers' data access to only the data relevant to their company. 
 
 
 <figure> 
@@ -7,10 +7,13 @@ For a customer I was tasked with figuring out an easy way of exposing some datab
         <figcaption>Architecture</figcaption>
 </figure>
 
+
+
 The solution I came up with consists of two components:
 
-- *Azure Function*, for translating HTTP requests into SQL queries, and for managing access to the database
-- *Azure Static Web App*, which hosts a website where a user can login to AAD and send a request to the Azure Function.
+- A *Azure Function*, for translating HTTP requests into SQL queries, and for managing access to the database. This function app can be addressed like this: http://dbapipoc.azurewebsites.net/api/schema/api-test/view/meta.getAllColumns?offset=0&limit=5&where={'column':'name','operator':'=','value':'rsid'}" where a user can select a specific schema, database view. The user can also filter on column values, and use offset / limit to do pagination.
+
+- A *Azure Static Web App*, which hosts a website where a user can login to AAD and send a request to the Azure Function.
 
 Furthermore, three entities were created in AAD to facilitate authentication:
 
