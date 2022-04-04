@@ -3,11 +3,13 @@ For a customer I was tasked with figuring out an easy way of exposing some datab
 
 The solution I came up with consists of four components:
 
-To host the logic:
+
+#### To host the logic:
 - Azure Function, for translating HTTP requests into SQL queries, and for managing access to the database
 - Single Page Application, for calling the API in a browser, using a AD user identity
 
-To provide authentication functionality:
+
+#### To provide authentication functionality:
 - Azure Active Directory Single Page Application app registration
 - Azure Active Directory API Caller app registration.
 - Azure Active Directory API Provider app registration. 
