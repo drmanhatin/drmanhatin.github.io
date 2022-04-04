@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 # Exposing your Azure Synapse database views as a rest api while enabling use of row level security
 For a customer I was tasked with figuring out an easy way of exposing some database views as an API. Aside of the usual functionality such as limiting and filtering using parameters, the API should also use the identity of the caller to connect to the database. By doing this, the API can make use of the database row level security functionality, which is a method of keeping track who can access which rows in the database.  For example, you can ensure that workers access only those data rows that are pertinent to their department. Another example is to restrict customers' data access to only the data relevant to their company.
-=======
-#  (Work In Progress) Exposing your Azure Synapse database views as a rest api, source code to be added later
-For a customer I was tasked with figuring out an easy way of exposing some database views as an API.
->>>>>>> 5ae0df6e0813deefd3ecde489b3ded69b5527dce
 
 The solution I came up with consists of four components:
 
