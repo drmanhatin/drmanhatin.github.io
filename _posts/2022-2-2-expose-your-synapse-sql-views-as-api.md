@@ -2,8 +2,6 @@
 For a customer I was tasked with figuring out an easy way of exposing some database views as an API. Aside of the usual functionality such as limiting and filtering using parameters, the API should also use the identity of the caller to connect to the database. By doing this, the API can make use of the database row level security functionality, which is a method of keeping track who can access which rows in the database.  For example, you can ensure that workers access only those data rows that are pertinent to their department. Another example is to restrict customers' data access to only the data relevant to their company.
 
 The solution I came up with consists of four components:
-
-
 #### To host the logic:
 - Azure Function, for translating HTTP requests into SQL queries, and for managing access to the database
 - Single Page Application, for calling the API in a browser, using a AD user identity
@@ -30,7 +28,7 @@ A user can also provide options in the querystring of the request. These options
 Example: http://localhost:7071/api/schema/api-test/view/meta.getAllColumns?offset=0&limit=5&where={'column':'name','operator':'=','value':'rsid'}",
 This request will get the first 5 rows out of the meta.getAllColumns view. Furthermore, it will only return the rows of which the name column is equal to rsid. 
 
-# Architecture/Token Flow
+### Architecture/Token Flow
 <figure> 
         <img src="/assets/images/tokenflow.png" />
         <figcaption>Token flow</figcaption>
@@ -57,7 +55,7 @@ Application flow (green):
 6. Function App converts results into JSON
 7. Function app returns data
 
-## Azure Function
+### Azure Function
 The Azure Function is written in .NET Framework 5.0 and runs in [isolated mode](https://docs.microsoft.com/en-us/azure/azure-functions/dotnet-isolated-process-guide)
 
 For local development, credentials and other configuration are stored in local.settings.json (not commited in this repository see example.local.settings.json for an example) and config.json.
@@ -65,12 +63,12 @@ For local development, credentials and other configuration are stored in local.s
 In the Azure environment, credentials are managed using ***Azure Keyvault***.  The Azure Function is configured to have access to this keyvault.
 
 
-## Authentication
+### Authentication
 The auth process for a service principal is different from a normal AD user. To solve this problem, the caller of the API must provide the "iuser" header. This can contain a value of either "true" if its a service principal calling the api, or "false", if its a normal user making the call. The function then decides the appropriate flow for logging in to the database.
 
 The function also supports a traditional database connection (for debug purposes), this can be initialized using the DatabaseConnector class.
 
-## SQL
+### SQL
 As mentioned before, the identity of user/service principal is used to connect to database
 
 Learn how to add a service principal to DB here:
@@ -101,7 +99,7 @@ foreach(string key in queryDictionary.Keys)
 This piece of code is responsible for translating the querystring into a SQL query. As you can see its concise and easy to read.
 Using SQLKata it is trivial to add more filtering options. 
 
-## Active Directory
+### Active Directory
 The active directory configuration for this POC consists of three parts, an app registration for the SPA, an app registration for the service principal (application calling the api) and an app registration for the backend (the azure function which is being called).
 
 WebApi is the app registration for the backend. Its permissions look as following: 
@@ -134,16 +132,16 @@ Now the permissions of the app registration for the service principal and the SP
 </figure>
 
 
-# Github structure
+### Github structure
 You can find the code used to build this application in a Github repository. This is just a proof of concept, no production grade done. But I think if you want to build something similar it might be useful!
 
-## SqlRestFunction
+### SqlRestFunction
 This folder contains the code of the Azure function. Example config is in example.local.settings.json. As mentioned before it's built using  .NET Framework 5.
 
-## SPA 
+### SPA 
 The single page application is a simple HTML/Javascript page. It is currently hosted using Azure Static Web Apps. It allows the user to sign in to Active Directory, it stores this token and uses it when sending requests to the azure function.
 
-## Application API Caller
+### Application API Caller
 This is a small demonstration of how a service principal could call the Azure Function. It is written in NodeJS.
 
 ### Possible improvements/todos before taking this to production
