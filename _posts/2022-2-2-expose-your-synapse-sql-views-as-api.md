@@ -135,13 +135,13 @@ Now the permissions of the app registration for the service principal and the SP
 ### Github structure
 You can find the code used to build this application in a Github repository. This is just a proof of concept, no production grade code. But I think if you want to build something similar it might be useful!
 
-#### SqlRestFunction
+*SqlRestFunction*
 This folder contains the code of the Azure function. Example config is in example.local.settings.json. As mentioned before it's built using  .NET Framework 5.
 
-#### SPA 
+*SPA*
 The single page application is a simple HTML/Javascript page. It is currently hosted using Azure Static Web Apps. It allows the user to sign in to Azure Active Directory, it stores this token and uses it when sending requests to the azure function.
 
-#### Application API Caller
+*Application API Caller*
 This is a small demonstration of how a service principal could call the Azure Function. It is written in NodeJS.
 
 ### Possible improvements/todos before taking this to production
