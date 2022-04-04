@@ -7,11 +7,9 @@ For a customer I was tasked with figuring out an easy way of exposing some datab
         <figcaption>Architecture</figcaption>
 </figure>
 
-
-
 The solution I came up with consists of two components:
 
-- A *Azure Function*, for translating HTTP requests into SQL queries, and for managing access to the database. This function app can be addressed like this: http://dbapipoc.azurewebsites.net/api/schema/api-test/view/meta.getAllColumns?offset=0&limit=5&where={'column':'name','operator':'=','value':'rsid'}" where a user can select a specific schema, database view. The user can also filter on column values, and use offset / limit to do pagination.
+- A *Azure Function*, for translating HTTP requests into SQL queries, and for managing access to the database. This function app can be addressed like this: `http://dbapipoc.azurewebsites.net/api/schema/api-test/view/meta.getAllColumns?offset=0&limit=5&where={'column':'name','operator':'=','value':'rsid'}"` where a user can select a specific schema, database view. The user can also filter on column values, and use offset / limit to do pagination.
 
 - A *Azure Static Web App*, which hosts a website where a user can login to AAD and send a request to the Azure Function.
 
@@ -23,24 +21,13 @@ Furthermore, three entities were created in AAD to facilitate authentication:
 
 These app registrations allow both users and applications to sign in and get access to the database. Basically, when the user or application signs in, a token is generated. This token is then sent to the API and there it is used to setup a connection to the database.
 
-The API user can select specific schemas and views by formatting the url, like this:
-
-GetView route:
-`"schema/{schema}/view/{view}"`
-User can query a specific view, in a specific schema, using the {schema} and {view} parameters. 
-
-A user can also provide options in the querystring of the request. These options are translated to a SQL query using [SQLKata](https://sqlkata.com/docs).
-Example: `http://localhost:7071/api/schema/api-test/view/meta.getAllColumns?offset=0&limit=5&where={'column':'name','operator':'=','value':'rsid'}"`,
-This request will get the first 5 rows out of the meta.getAllColumns view. Furthermore, it will only return the rows of which the name column is equal to rsid. 
-
 Connection uses the accesstoken received from Azure Active Directory to setup a connection the database as illustrated below: 
 
 ```   
-        SqlConnection connection = new SqlConnection(builder.ConnectionString);
-    
-        connection.AccessToken = _databaseAccessToken;
-        connection.Open();
-        return connection;
+SqlConnection connection = new SqlConnection(builder.ConnectionString);
+connection.AccessToken = _databaseAccessToken;
+connection.Open();
+return connection;
 ```
 
 
