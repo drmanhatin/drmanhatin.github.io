@@ -153,7 +153,7 @@ This is a small demonstration of how a service principal could call the Azure Fu
 
 ### Possible improvements/todos before taking this to production
 - Add proper pagination defaults (e.g. dont allow user to get over 100 rows at once)
-- Allow end user to discover API options through API
+- Allow end user to discover API options through Azure API Management
 - Store connection objects so you can reuse the same connection instead of opening/closing the db connection for every request
 - Cache requests
 - Fix "getallviews" route, maybe we dont need a stored procedure for this
