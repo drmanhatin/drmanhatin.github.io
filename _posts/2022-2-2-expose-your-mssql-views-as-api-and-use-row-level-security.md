@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "How to expose your MSSQL Database Views as an API, and take advantage of Row Level Security"
-date:   2020-12-15 11:33:27 +0100
+date:   2022-04-04 11:33:27 +0100
 categories: azure customvision
 description: "How to expose your MSSQL Database Views as an API, and take advantage of Row Level Security by using the identity of the API caller to connect to the database. Built using Azure Functions + Azure Active Directory" 
 ---
