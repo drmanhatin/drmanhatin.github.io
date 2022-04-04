@@ -1,4 +1,4 @@
-# Exposing your Azure Synapse database views as a rest api while enabling use of row level security
+## Exposing your Azure Synapse database views as a rest api while enabling use of row level security
 For a customer I was tasked with figuring out an easy way of exposing some database views as an API. Aside of the usual functionality such as limiting and filtering using parameters, the API should also use the identity of the caller to connect to the database. By doing this, the API can make use of the database row level security functionality, which is a method of keeping track who can access which rows in the database.  For example, you can ensure that workers access only those data rows that are pertinent to their department. Another example is to restrict customers' data access to only the data relevant to their company.
 
 The solution I came up with consists of four components:
@@ -144,7 +144,7 @@ The single page application is a simple HTML/Javascript page. It is currently ho
 ### Application API Caller
 This is a small demonstration of how a service principal could call the Azure Function. It is written in NodeJS.
 
-### Possible improvements/todos before taking this to production
+#### Possible improvements/todos before taking this to production
 - Add proper pagination defaults (e.g. dont allow user to get over 100 rows at once)
 - Allow end user to discover API options through API
 - Store connection objects so you can reuse the same connection instead of opening/closing the db connection for every request
