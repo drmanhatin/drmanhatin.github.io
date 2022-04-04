@@ -1,3 +1,11 @@
+---
+layout: default
+title:  "How to expose your MSSQL Database Views as an API, and take advantage of Row Level Security"
+date:   2020-12-15 11:33:27 +0100
+categories: azure customvision
+description: "How to expose your MSSQL Database Views as an API, and take advantage of Row Level Security by using the identity of the API caller to connect to the database. Built using Azure Functions + Azure Active Directory" 
+---
+
 ## How to expose your MSSQL Database Views as an API, and take advantage of Row Level Security by using the identity of the API caller to connect to the database.
 
 For a customer I was tasked with figuring out an easy way of exposing some database views as an API. Aside of the usual functionality such as limiting and filtering using parameters, the API should also use the identity of the caller to connect to the database. By doing this, the API can make use of the database row level security functionality, which is a method of keeping track who can access which rows in the database.  For example, you can ensure that workers access only those data rows that are pertinent to their department. Another example is to restrict customers' data access to only the data relevant to their company. 
