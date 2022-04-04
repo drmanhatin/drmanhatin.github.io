@@ -1,25 +1,26 @@
 ## Exposing your Azure Synapse database views as an API while enabling use of row level security
 For a customer I was tasked with figuring out an easy way of exposing some database views as an API. Aside of the usual functionality such as limiting and filtering using parameters, the API should also use the identity of the caller to connect to the database. By doing this, the API can make use of the database row level security functionality, which is a method of keeping track who can access which rows in the database.  For example, you can ensure that workers access only those data rows that are pertinent to their department. Another example is to restrict customers' data access to only the data relevant to their company.
 
-The solution I came up with consists of four components:
 
-#### To host the logic:
-- Azure Function, for translating HTTP requests into SQL queries, and for managing access to the database
-- Single Page Application, for calling the API in a browser, using a AD user identity
+<figure> 
+        <img src="/assets/images/func-architecture.png" />
+        <figcaption>Architecture</figcaption>
+</figure>
 
+The solution I came up with consists of two components:
 
-#### To provide authentication functionality:
+- *Azure Function*, for translating HTTP requests into SQL queries, and for managing access to the database
+- *Azure Static Web App*, which hosts a website where a user can login to AAD and send a request to the Azure Function.
+
+Furthermore, three entities were created in AAD to facilitate authentication:
+
 - Azure Active Directory Single Page Application app registration
 - Azure Active Directory API Caller app registration.
 - Azure Active Directory API Provider app registration. 
 
 These app registrations allow both users and applications to sign in and get access to the database. Basically, when the user or application signs in, a token is generated. This token is then sent to the API and there it is used to setup a connection to the database.
 
-The caller of the API can select specific schemas and views by formatting the url, like this:
-
-GetViews route:
-`"schema/{schema}/views"`
-User can select specific schema using this pattern {schema} can be a value provided by the user. 
+The API user can select specific schemas and views by formatting the url, like this:
 
 GetView route:
 `"schema/{schema}/view/{view}"`
@@ -28,7 +29,6 @@ User can query a specific view, in a specific schema, using the {schema} and {vi
 A user can also provide options in the querystring of the request. These options are translated to a SQL query using [SQLKata](https://sqlkata.com/docs).
 Example: http://localhost:7071/api/schema/api-test/view/meta.getAllColumns?offset=0&limit=5&where={'column':'name','operator':'=','value':'rsid'}",
 This request will get the first 5 rows out of the meta.getAllColumns view. Furthermore, it will only return the rows of which the name column is equal to rsid. 
-
 
 Connection uses the accesstoken received from Azure Active Directory to setup a connection the database as illustrated below: 
 
@@ -42,6 +42,9 @@ Connection uses the accesstoken received from Azure Active Directory to setup a 
 
 
 ### Architecture/Token Flow
+
+
+
 <figure> 
         <img src="/assets/images/tokenflow.png" />
         <figcaption>Token flow</figcaption>
