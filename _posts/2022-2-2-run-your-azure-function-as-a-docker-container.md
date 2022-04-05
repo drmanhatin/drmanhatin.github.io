@@ -113,25 +113,39 @@ resource containerRegistry 'Microsoft.ContainerRegistry/registries@2021-06-01-pr
 ```
 
 Lets deploy the Azure Container Registry first using the bicep code:
-```1. change the name of the az container registry in containerregistry.bicep```
+```
+1. change the name of the az container registry in containerregistry.bicep
+```
 
 We need to login to Azure so we can issue the next commands.
-```2. az login ```
+```
+2. az login 
+```
 
 Now create a resource group (change region/name as desired)
-```3. az group create -l westeurope -n iscachefunction```
+```
+3. az group create -l westeurope -n iscachefunction
+```
 
 The next step deploys the bicep file to the iscachefunction resource group
-```4. az deployment group create --resource-group iscachefunction --template-file .\containerregistry.bicep```
+```
+4. az deployment group create --resource-group iscachefunction --template-file .\containerregistry.bicep
+```
 
 This step logs us in to this container registry so we can upload our docker image to it.
-```5. az acr login --name NAMEOFYOURCONTAINERREGISTRY```
+```
+5. az acr login --name NAMEOFYOURCONTAINERREGISTRY
+```
 
 Now we will link our local docker image to a docker image hosted in the container registry. 
-```6. docker tag myacc/azurefunctionsimage:v0.0.2 cachetwofunctionacr.azurecr.io/azurefunctionsimage:v0.0.2```
+```
+6. docker tag myacc/azurefunctionsimage:v0.0.2 cachetwofunctionacr.azurecr.io/azurefunctionsimage:v0.0.2
+```
 
 And finally we will upload our image.
-```7. docker push cachetwofunctionacr.azurecr.io/azurefunctionsimage:v0.0.2```
+```
+7. docker push cachetwofunctionacr.azurecr.io/azurefunctionsimage:v0.0.2
+```
 
 #### Infrastructure.Bicep
 The following Bicep snippet lists the resources required to run the Azure function.
