@@ -8,7 +8,7 @@ ODBC driver."
 ---
 
 ## Introduction
-In this blog post I will walk you through the steps required to deploy your Azure Function as a Docker container. In this case the function was dockerized in order to be able to install a Intersystems Cache ODBC driver (a form of proprietary database), which you can't do in a normal app service environment. 
+In this blog post I will walk you through the steps required to deploy your Azure Function as a Docker container. In this case the function was dockerized in order to be able to install a Intersystems Cache ODBC driver (Intersystems Cache is a type of SQL database). You can't install an ODBC driver in a normal app service environment.
 
 To get this project to work in Azure you will roughly need to do two things:
 1. Build the container
