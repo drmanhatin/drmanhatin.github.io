@@ -239,7 +239,7 @@ resource NatGateway 'Microsoft.Network/natGateways@2021-05-01' = {
 
 In the previous step we uploaded our container image to the container registry. We will need to configure our Azure Function to run this container, and get access to our ACR.
 
-1. go to AZ portal and copy username:password from docker registry
+1. go to the Azure portal and copy the username password from the Azure Container Registry.
 2. update the docker values in the infrastructure bicep file, and change the linuxFxVersion to link to your own azure container registry and your specific docker image.
 ```
         {
