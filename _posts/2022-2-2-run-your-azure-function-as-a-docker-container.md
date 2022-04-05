@@ -74,6 +74,7 @@ When you issue the docker build command, it will run through the dockerfile to i
 
 ```docker build --progress=plain --tag "myacc/azurefunctionsimage:v0.0.2" ```
 
+<br/><br/>
 
 **Run**
 
@@ -81,11 +82,14 @@ The Docker Run command starts up the container which we built in the previous st
 
 ```docker run -p 8080:80 -it "myacc/azurefunctionsimage:v0.0.2"```
 
+<br/><br/>
 
 **Try container**
 
 Now if we want to try to send requests to the dockerized Azure function, we can try the following url:
 http://localhost:8080/api/HttpExample?name=Functions
+
+<br/><br/>
 
 **Inspect container**
 
