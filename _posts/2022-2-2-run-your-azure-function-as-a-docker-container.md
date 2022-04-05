@@ -23,7 +23,7 @@ If you want to follow through the steps of this article, I will assume you have 
 
 
 ## Building the container
-First we will need to create an Azure Functions project. We will use the VS Code functions extension to generate a Python 3.6 HTTP Trigger function. [funcextension.jpeg]
+First we will need to create an Azure Functions project. We will use the VS Code functions extension to generate a Python 3.6 HTTP Trigger function. 
 Try the container locally (press F5 in VS code) to make sure everything is working correctly.
 Now the next step is to build the container. We will create a dockerfile in the root of the functions project. The docker image provided by Microsoft(mcr.microsoft.com/azure-functions/python:3.0-python3.6) is built on top of Debian 10, a popular Linux distribution. Because we run the function in a docker container, we will be able to install the ODBC driver as we would on a 'normal' Linux server. I have added the dockerfile I used to build the Azure Function docker container below:
 ``` 
