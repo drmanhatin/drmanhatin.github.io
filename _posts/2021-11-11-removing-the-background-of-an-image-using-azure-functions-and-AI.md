@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  "Creating your own image background removal API | Remove.bg clone"
+title:  "Creating your own image background removal API using Azure Functions | Remove.bg clone"
 date:   2021-10-26 11:33:27 +0100
 categories: azure functions remove.bg clone
 description: "For an app I have made, I was looking for an API with which you could remove the background of an image. I found a few but most of them charge around 20 eurocents per image which I found far tooS much. 
