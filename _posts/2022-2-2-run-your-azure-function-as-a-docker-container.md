@@ -242,7 +242,7 @@ In the previous step we uploaded our container image to the container registry. 
 1. go to AZ portal and copy username:password from docker registry
 2. update the docker values in the infrastructure bicep file, and change the linuxFxVersion to link to your own azure container registry and your specific docker image.
 ```
- {
+        {
           name: 'DOCKER_REGISTRY_SERVER_URL'
           value: 'cachetwofunctionacr.azurecr.io'
         }
