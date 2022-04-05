@@ -90,7 +90,7 @@ We can still take a look inside the container and see how everything is configur
 2. docker exec -it "FIRSTCHARSOFCONTAINER" /bin/bash
 ```
 
-Now you can explore the container using the command line! When building the docker container I used this to check whether all files were in the correct place.
+Now you can explore the container using the command line! When building the docker container, I used this tool to check whether all files were in the correct place.
 
 ## Deploy it to Azure
 The next step is to deploy the docker container to Azure. First we will make a container registry which we will use to store the container image we built.
