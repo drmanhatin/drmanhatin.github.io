@@ -257,7 +257,8 @@ In the previous step we uploaded our container image to the container registry. 
           value: 'XEbEMIxsEZL4gSyU/YnkHUbfYY######'
         }
 ```
-- 
+
+Now finally, lets deploy the rest of the infrastructure to Azure.
 ```
 3. az deployment group create --resource-group yourrgname --template-file .\infrastructure.bicep
 ```
