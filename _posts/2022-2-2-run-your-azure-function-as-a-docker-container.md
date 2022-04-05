@@ -74,11 +74,13 @@ When you issue the docker build command, it will run through the dockerfile to i
 
 ```docker build --progress=plain --tag "myacc/azurefunctionsimage:v0.0.2" ```
 
+
 **Run**
 
 The Docker Run command starts up the container which we built in the previous step. By adding the -p (port) parameter, we expose the port 80 on the docker container, to respond to requests on the 8080 port. 
 
 ```docker run -p 8080:80 -it "myacc/azurefunctionsimage:v0.0.2"```
+
 
 **Try container**
 
