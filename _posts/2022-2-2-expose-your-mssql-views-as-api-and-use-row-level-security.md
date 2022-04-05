@@ -10,6 +10,8 @@ description: "How to expose your MSSQL Database Views as an API, and take advant
 
 For a customer I was tasked with figuring out an easy way of exposing some database views as an API. Aside of the usual functionality such as limiting and filtering using parameters, the API should also use the identity of the caller to connect to the database. By doing this, the API can make use of the database row level security functionality, which is a method of keeping track who can access which rows in the database.  For example, you can ensure that workers access only those data rows that are pertinent to their department. Another example is to restrict customers' data access to only the data relevant to their company. 
 
+You can find the code for this proof of concept in my github repository: https://github.com/drmanhatin/MSSQL_OnBehalfOf_API
+
 
 <figure> 
         <img src="/assets/images/func-architecture.png" />
