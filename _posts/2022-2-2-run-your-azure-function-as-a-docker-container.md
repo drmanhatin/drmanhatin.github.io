@@ -68,24 +68,24 @@ COPY . /home/site/wwwroot
 RUN cd /home/site/wwwroot && pip install -r requirements.txt
 ```
 
-*Build* 
+**Build**
 
 When you issue the docker build command, it will run through the dockerfile to install the requirements and perform the steps. In this case I am also tagging the container as myacc/azurefunctionsimage:v0.0.2, to identify this particular build.
 
 ```docker build --progress=plain --tag "myacc/azurefunctionsimage:v0.0.2" ```
 
-*Run*
+**Run**
 
 The Docker Run command starts up the container which we built in the previous step. By adding the -p (port) parameter, we expose the port 80 on the docker container, to respond to requests on the 8080 port. 
 
 ```docker run -p 8080:80 -it "myacc/azurefunctionsimage:v0.0.2"```
 
-*Try container*
+**Try container**
 
 Now if we want to try to send requests to the dockerized Azure function, we can try the following url:
 http://localhost:8080/api/HttpExample?name=Functions
 
-*Inspect container*
+**Inspect container**
 
 We can still take a look inside the container and see how everything is configured. Taking a look inside can be very useful for debugging purposes.
 
