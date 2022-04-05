@@ -92,10 +92,9 @@ We can still take a look inside the container and see how everything is configur
 
 Now you can explore the container using the command line! When building the docker container, I used this tool to check whether all files were in the correct place.
 
-## Deploy it to Azure
-The next step is to deploy the docker container to Azure. First we will make a container registry which we will use to store the container image we built.
+## Deploying it to Azure
+In order to be able to deploy our solution to Azure, the first step is to create a Azure Container Registry. We will use this to store the container image we built.
 
-#### Creating the Container Registry 
 This bicep snippet creates a container registry in Azure. 
 
 ```
