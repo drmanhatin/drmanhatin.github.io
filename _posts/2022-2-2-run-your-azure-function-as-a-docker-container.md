@@ -257,9 +257,10 @@ In the previous step we uploaded our container image to the container registry. 
           value: 'XEbEMIxsEZL4gSyU/YnkHUbfYY######'
         }
 ```
-3. az deployment group create --resource-group iscachefunction --template-file .\infrastructure.bicep
-
-At this point everything should be working. If it's not, check the logs by going to https://{REPLACEWITHYOURFUNCTIONNAME}.scm.azurewebsites.net/api/logs/docker , there you might see what went wrong. Maybe you forgot to change the docker registry server username & password?
+```
+3. az deployment group create --resource-group yourrgname --template-file .\infrastructure.bicep
+```
+At this point everything should be working. If it's not, check the logs by going to https://{replacewithyourfunctionname}.scm.azurewebsites.net/api/logs/docker , there you might see what went wrong. Maybe you forgot to change the docker registry server username & password?
 
  
 
