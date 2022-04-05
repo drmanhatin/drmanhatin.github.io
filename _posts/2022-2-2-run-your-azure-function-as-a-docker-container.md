@@ -69,20 +69,24 @@ RUN cd /home/site/wwwroot && pip install -r requirements.txt
 ```
 
 *Build* 
+
 When you issue the docker build command, it will run through the dockerfile to install the requirements and perform the steps. In this case I am also tagging the container as myacc/azurefunctionsimage:v0.0.2, to identify this particular build.
 
 ```docker build --progress=plain --tag "myacc/azurefunctionsimage:v0.0.2" ```
 
 *Run*
+
 The Docker Run command starts up the container which we built in the previous step. By adding the -p (port) parameter, we expose the port 80 on the docker container, to respond to requests on the 8080 port. 
 
 ```docker run -p 8080:80 -it "myacc/azurefunctionsimage:v0.0.2"```
 
 *Try container*
+
 Now if we want to try to send requests to the dockerized Azure function, we can try the following url:
 http://localhost:8080/api/HttpExample?name=Functions
 
 *Inspect container*
+
 We can still take a look inside the container and see how everything is configured. Taking a look inside can be very useful for debugging purposes.
 
 ```
@@ -260,7 +264,9 @@ Now finally, lets deploy the rest of the infrastructure to Azure.
 ```
 3. az deployment group create --resource-group yourrgname --template-file .\infrastructure.bicep
 ```
-At this point everything should be working. If it's not, check the logs by going to https://{replacewithyourfunctionname}.scm.azurewebsites.net/api/logs/docker , there you might see what went wrong. Maybe you forgot to change the docker registry server username & password?
+At this point everything should be working. If it's not, check the logs by going to https://{replacewithyourfunctionname}.scm.azurewebsites.net/api/logs/docker , there you might see what went wrong. Maybe you forgot to change the docker registry server username & password? 
+
+I hope you found this useful! 
 
  
 
