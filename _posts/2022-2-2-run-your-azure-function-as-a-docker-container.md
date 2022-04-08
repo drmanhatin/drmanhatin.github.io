@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  "How to run a (Python) Azure Function as a Docker container"
+title:  "How to run a (Python) Azure Function as a Docker container & Deploy it using Bicep"
 date:   2022-04-04 11:33:27 +0100
 categories: azure customvision
 description: "In this blog post I will walk you through the steps required to deploy your Azure Function as a Docker container. In this case the function was dockerized in order to be able to use a specific 
