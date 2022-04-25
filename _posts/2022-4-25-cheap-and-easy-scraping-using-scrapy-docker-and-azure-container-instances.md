@@ -134,7 +134,6 @@ Et voila, thats that. Your scraper will be started according to your schedule, a
 4. az container create (with same name, but change the image, so it will not deploy again!)
 
 I hope you found this useful!
-Victor
 
 {% include share-buttons.html %}
 
