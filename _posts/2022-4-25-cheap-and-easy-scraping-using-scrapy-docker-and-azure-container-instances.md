@@ -117,7 +117,7 @@ As you can see from this command, you are required to provide the resource group
 After running the command you can check the status of your container instance easily through the Azure Portal.
 
 #### Step three: starting our scraper according to a schedule
-Now for the last cherry on top we're going to setup a logic app to start this container every day. Create a _serverless_ logic app using the portal. Serverless ensures that we are only billed when the logic app is fired, and follow the next steps:
+Now for the last cherry on top we're going to setup a logic app to start this container every day. Create a _serverless_ logic app using the portal, serverless ensures that we are only billed when the logic app is fired. Follow the next steps to create the logic app:
 
 1. Create an empty logic app using the designer
 2. Search for "schedule" and select a time which suits your - and the site which you are scraping - needs. Maybe scraping during the busiest hours of a website isn't so nice? 
@@ -126,7 +126,7 @@ Now for the last cherry on top we're going to setup a logic app to start this co
 5. You may be prompted to sign in again now. 
 6. Select your subscription, resource group & container name.
 
-Et voila, thats that. Your scraper will be started according to your schedule, and stop again when you're finished. You can make changes and deploy changes by following these four steps again:
+Et voila, thats that. Your scraper will be started according to your schedule, and stop again when the scraping is finished. If you want to change your scraper and deploy the changes, you can follow these four steps again:
 
 1. Docker build
 2. Docker tag local:azurecr
