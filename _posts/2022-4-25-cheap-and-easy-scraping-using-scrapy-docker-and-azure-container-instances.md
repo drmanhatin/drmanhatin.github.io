@@ -71,7 +71,7 @@ class FundaPipeline(object):
 
 
 #### Step one, building the container
-Lets setup our cloud infrastructure first. We'll createa a Azure Container Registry first. So go create that using the portal and copy the address, username & password somewhere - we'll need this shortly...
+Lets setup our cloud infrastructure first. We'll createa a Azure Container Registry first. So go create that using the portal and copy the container registry address (xxx.azurecr.io), username & password somewhere - we'll need this shortly...
 
 The dockerfile, which docker will use to build the container, looks like this:
 
