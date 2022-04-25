@@ -69,7 +69,7 @@ class FundaPipeline(object):
 
 
 
-#### Step one, building the container
+#### Step two: building & deploying the container
 Lets setup our cloud infrastructure first. We'll createa a Azure Container Registry first. So go create that using the portal and copy the container registry address (xxx.azurecr.io), username & password somewhere - we'll need this shortly...
 
 The dockerfile, which docker will use to build the container, looks like this:
@@ -116,6 +116,7 @@ As you can see from this command, you are required to provide the resource group
 
 After running the command you can check the status of your container instance easily through the Azure Portal.
 
+#### Step three: starting our scraper according to a schedule
 Now for the last cherry on top we're going to setup a logic app to start this container every day. Create a _serverless_ logic app using the portal. Serverless ensures that we are only billed when the logic app is fired, and follow the next steps:
 
 1. Create an empty logic app using the designer
