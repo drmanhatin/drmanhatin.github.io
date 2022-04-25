@@ -133,8 +133,8 @@ Et voila, thats that. Your scraper will be started according to your schedule, a
 3. Docker push 
 4. az container create (with same name, but change the image, so it will not deploy again!)
 
-I hope you found this useful!
-
+Happy Scraping,
+Victor.
 {% include share-buttons.html %}
 
 
