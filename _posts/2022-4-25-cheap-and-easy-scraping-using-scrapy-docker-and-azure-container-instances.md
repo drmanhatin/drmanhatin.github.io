@@ -10,11 +10,8 @@ description: "In this blog post I am going to show you how you can create a scra
 
 Hi all,
 
-In this blog post I am going to show you how you can create a scraper using Python, Scrapy, Docker and deploy this solution to Azure Container Instances.
+In this blog post I am going to show you how you can create a scraper using Python, Scrapy and Docker. We will then deploy this solution to Azure Container Instances, which is a service which you can use to easily run docker containers. These instances are billed per second, so to save money we will configure the service to shut down after it has finished. What's also nice about ACI is that your outbound IP frequently changes, so this might save the need for using a proxy, and save some more money. Finally we will trigger the scraper to run every day using a Azure Logic App, and store all our data using CosmosDB (MongoDB API). The end result is a pretty cheap and simple scraper, which starts according to our schedule. 
 
-Azure Container Instance is a service which you can use to easily run docker containers. These instances are billed per second, so to save money we will configure the service to shut down after it has finished. What's also nice about ACI is that your outbound IP frequently changes, so this might save the need for using a proxy, and save some more money.
-
-Finally we will trigger the scraper to run every day using a Azure Logic App, and store all our data using CosmosDB (MongoDB API). The end result is a pretty cheap and simple scraper, which starts according to our schedule. 
 
 ### Requirements
 - Python
@@ -88,28 +85,24 @@ RUN pip install -r requirements.txt
 # Run scrapy - the container will exit when this finishes!
 CMD python script.py
 ```
+\Now you can use the following command to build the container and tag it as victor/myScraper:v1.0.1
+```docker build . --no-cache -t victor/myScraper:v1.0.1```
 
-Now you can use the following command to build the container and tag it as victor/myScraper:v1.0.1
-```docker build . --no-cache -t victor/myScraper:v1.0.1```\
+\To debug our container we can use the following command:
+```docker run -it victor/myScraper:v1.0.1```
 
-To debug our container we can use the following command:
-```docker run -it victor/myScraper:v1.0.1```\
+\The next command links our previously tagger docker image to our image which we are going to push to the Azure Container Registry.
+```docker tag victor/myScraper:v1.0.1 mycontainerregistry.azurecr.io/myScraper:v1.0.1```
 
-The next command links our previously tagger docker image to our image which we are going to push to the Azure Container Registry.
-```docker tag victor/myScraper:v1.0.1 mycontainerregistry.azurecr.io/myScraper:v1.0.1```\
-
-
-And finally this command pushes our image to the Azure Container Registry.
-```docker push mycontainerregistry.azurecr.io/myScraper:v1.0.1```\
-
+\And finally this command pushes our image to the Azure Container Registry.
+```docker push mycontainerregistry.azurecr.io/myScraper:v1.0.1```
 
 Okay so we have now uploaded our image to Azure Container Registry. The next step is for us to create a container instance using that image.  
 
 The command which we will use to create a Azure Container Instance and link it to our ACR image is:
 ```az container create  --resource-group scraper --name myScraper --image mycontainerregistry.azurecr.io/myScraper:v1.0.1 --restart-policy OnFailure --memory 0.5```\
 
-
-As you can see from this command, you are required to provide the resource group name which your container instance will reside it. We're also giving it a name and linking it to our previously uploaded image hosted in our Azure Container Registry. The restart policy ensures that when the container finishes, it will not start again. In practice this means that after the scraper has ran and written everything to the database, it will shut down. 
+\As you can see from this command, you are required to provide the resource group name which your container instance will reside it. We're also giving it a name and linking it to our previously uploaded image hosted in our Azure Container Registry. The restart policy ensures that when the container finishes, it will not start again. In practice this means that after the scraper has ran and written everything to the database, it will shut down. 
 
 After running the command you can check the status of your container instance easily through the Azure Portal.
 
