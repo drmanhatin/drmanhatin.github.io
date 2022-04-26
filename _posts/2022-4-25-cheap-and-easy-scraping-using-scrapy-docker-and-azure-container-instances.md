@@ -102,9 +102,9 @@ Okay so we have now uploaded our image to Azure Container Registry. The next ste
 The command which we will use to create a Azure Container Instance and link it to our ACR image is:
 ```az container create  --resource-group scraper --name myScraper --image mycontainerregistry.azurecr.io/myScraper:v1.0.1 --restart-policy OnFailure --memory 0.5```\
 
-As you can see from this command, you are required to provide the resource group name which your container instance will reside it. We're also giving it a name and linking it to our previously uploaded image hosted in our Azure Container Registry. The restart policy ensures that when the container finishes, it will not start again. In practice this means that after the scraper has ran and written everything to the database, it will shut down. 
+As you can see from this command, you are required to provide the resource group name which your container instance will reside it. We also need to give it a name and link it to our previously uploaded image hosted in our Azure Container Registry. The --restart-policy parameter ensures that when the container finishes, it will not start again. In practice this means that after the scraper has ran and written everything to the database, it will shut down. 
 
-After running the command you can check the status of your container instance easily through the Azure Portal.
+After running the command you can check the status of your container instance easily through the Azure Portal, or watch the output of your program (scrapy logging?) live.
 
 #### Step three: starting our scraper according to a schedule
 Now for the last cherry on top we're going to setup a logic app to start this container every day. Create a _serverless_ logic app using the portal, serverless ensures that we are only billed when the logic app is fired. Follow the next steps to create the logic app:
