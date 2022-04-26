@@ -85,16 +85,16 @@ RUN pip install -r requirements.txt
 # Run scrapy - the container will exit when this finishes!
 CMD python script.py
 ```
-\Now you can use the following command to build the container and tag it as victor/myScraper:v1.0.1
+Now you can use the following command to build the container and tag it as victor/myScraper:v1.0.1
 ```docker build . --no-cache -t victor/myScraper:v1.0.1```
 
-\To debug our container we can use the following command:
+To debug our container we can use the following command:
 ```docker run -it victor/myScraper:v1.0.1```
 
-\The next command links our previously tagger docker image to our image which we are going to push to the Azure Container Registry.
+The next command links our previously tagger docker image to our image which we are going to push to the Azure Container Registry.
 ```docker tag victor/myScraper:v1.0.1 mycontainerregistry.azurecr.io/myScraper:v1.0.1```
 
-\And finally this command pushes our image to the Azure Container Registry.
+And finally this command pushes our image to the Azure Container Registry.
 ```docker push mycontainerregistry.azurecr.io/myScraper:v1.0.1```
 
 Okay so we have now uploaded our image to Azure Container Registry. The next step is for us to create a container instance using that image.  
@@ -102,7 +102,7 @@ Okay so we have now uploaded our image to Azure Container Registry. The next ste
 The command which we will use to create a Azure Container Instance and link it to our ACR image is:
 ```az container create  --resource-group scraper --name myScraper --image mycontainerregistry.azurecr.io/myScraper:v1.0.1 --restart-policy OnFailure --memory 0.5```\
 
-\As you can see from this command, you are required to provide the resource group name which your container instance will reside it. We're also giving it a name and linking it to our previously uploaded image hosted in our Azure Container Registry. The restart policy ensures that when the container finishes, it will not start again. In practice this means that after the scraper has ran and written everything to the database, it will shut down. 
+As you can see from this command, you are required to provide the resource group name which your container instance will reside it. We're also giving it a name and linking it to our previously uploaded image hosted in our Azure Container Registry. The restart policy ensures that when the container finishes, it will not start again. In practice this means that after the scraper has ran and written everything to the database, it will shut down. 
 
 After running the command you can check the status of your container instance easily through the Azure Portal.
 
