@@ -57,7 +57,8 @@ scrape()
 Our scrapy pipeline looks like this: 
 pipelines.py:
 ```
-class FundaPipeline(object):
+class My
+Pipeline(object):
     items=[]
     def process_item(self, item, spider):
         self.items.append(item)
